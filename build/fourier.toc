@@ -1,0 +1,6 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {section}{\numberline {1}Introducción}{2}{}%
+\contentsline {subsection}{\numberline {1.1}Cálculo de la periodicidad de una función}{4}{}%
+\contentsline {section}{\numberline {2}Desarrollo de Fourier}{6}{}%
+\contentsline {subsection}{\numberline {2.1}Series peródicas con periodo $2L$}{8}{}%
+\contentsline {section}{\numberline {3}Desarrollo de Fourier de funciones no periódicas}{8}{}%

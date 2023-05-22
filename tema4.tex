@@ -1,0 +1,948 @@
+\documentclass[a4paper,12pt,titlepage]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[spanish,es-tabla]{babel}
+\usepackage[none]{hyphenat}
+\usepackage[justification=centering]{caption}
+\usepackage{subcaption}
+\usepackage{amssymb, amsmath,,amsthm}
+\usepackage{gensymb}
+\usepackage{fancyhdr}
+\usepackage{wrapfig} % Se usa para integrar las figuras en el texto
+
+
+\title{Tema 4: Cálculo vectorial}
+\author{Gonzalo Bastos González}
+\date{Métodos matemáticos III}
+
+\newtheorem{theorem}{Teorema}
+\newtheorem{mydef}{Definición}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\newpage
+
+\section{Introducción: Repaso de parametrización}
+
+Hemos visto que es posible parametrizar una curva, $c(t)$ de $\mathbb{R}^n$ con $n>1$, como una función vectorial definida en un intervalo $[t_a,t_b]$ de $\mathbb{R}$. Por ejemplo la parametrización de una circunferencia de radio $r$ sería:
+
+\begin{equation}
+    t \in [0,2\pi) \rightarrow (r \cos t, r \sin t)
+\end{equation}
+
+La parametrización de una hélice de $n$ vueltas es similar, añadiendo una componente más en el eje Z, que se defina como la velocidad de movimiento en ese eje. Una aplicación de esta parametrización es la descripción del movimiento que siguen partículas cargadas cuando entran en un campo magnético uniforme, donde la velocidad en el eje Z representa la componente paralela al campo de la velocidad inicial.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.55\linewidth]{Images T4/helice.png}
+    \caption{Representación de una trayectoria helicoidal}
+\end{figure}
+
+Hay que recordar también que podemos parametrizar una trayectoria calculando su longitud de arco, que se calculaba mediante la siguiente integral:
+
+\begin{equation}
+    s = \int_\mathbf{c} ds = \int_{t_a}^{t_b} |\mathbf{\dot{c}}| dt   
+\end{equation}
+
+Donde $\mathbf{\dot{c}}$ es la derivada de $c(t)$:
+
+\begin{equation}
+    \mathbf{\dot{c}} = \left (\frac{dx_1(t)}{dt},\cdots,\frac{dx_n(t)}{dt}\right )
+\end{equation}
+
+\section{Integral de línea}
+
+\subsection{Funciones escalares}
+
+Consideremos el área bajo la línea $c(t)$, a la que en cada punto del espacio se le asigna un valor (Altura) que viene dado por una función $f(x,y)$, que en cada punto de esa línea es $f(c(t))$. El área bajo entre esa curva y el plano XY será la integral de la altura $f(x,y)$ por el diferencial de arco $ds = |\dot{c}|dt$ a lo largo de la línea:
+
+\begin{equation}
+    \mathcal{A}=\int_{\mathbf{c}} f(x, y) \mathrm{d} s=\int_{t_a}^{t_b} f(\mathbf{c}(t))|\dot{\mathbf{c}}(t)| \mathrm{d} t
+\end{equation}
+
+Un ejemplo del cálculo de una integral de línea aplicando este método es calcular la integral de $f(x,y)=x+y$ a lo largo de la circunferencia de radio unidad:
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.55\linewidth]{Images T4/intLinea1.png}
+    \caption{Representación gráfica de la integral de línea}
+\end{figure}
+
+La circunferencia de radio unidad tiene la siguiente parametrización:
+
+\begin{equation}
+    c(t) = (\cos t, \sin t) \quad t \in [0,2\pi)
+\end{equation}
+
+Por tanto el valor del diferencial de longitud de arco es:
+
+\begin{equation}
+    \dot{c(t)} = (-\sin t,\cos t) \Rightarrow ds = |\dot{c(t)}|dt = \sqrt{\sin^2 t + \cos^2 t}dt = dt
+\end{equation}
+
+Por tanto, el valor de la integral de línea a lo largo de la circunferencia es:
+
+\begin{equation}
+    \int_{\mathbf{c}}(x+y) \mathrm{d} s=\int_0^{2 \pi}(\sin t+\cos t) \mathrm{d} t=-\cos t+\sin t\Big|_0 ^{2 \pi}=0
+    \end{equation}
+
+\subsection{Funciones vectoriales}
+
+Podemos definir también la integral a lo largo de una línea de una función vectorial, $\mathbf{F(x)}$, a lo largo de una línea $c(t)$ como:
+
+\begin{equation}
+    \int_{\mathbf{c}} \mathbf{F}(\mathbf{x}) \mathrm{d} \mathbf{s}=\int_{t_a}^{t_b} \mathbf{F}(\mathbf{c}(t)) \dot{\mathbf{c}}(t) \mathrm{d} t
+\end{equation}
+
+Donde $F(c(t))$ es la función vectorial evaluada a lo largo de nuestra línea y $ds=\dot{c}(t)dt$ es el diferencial de arco. Ahora $ds$ es un diferencial vectorial y integramos el producto escalar entre ambos vectores.
+
+\par Un ejemmplo de una integral de línea de una función vectorial: Sea $F(x,y)=(-y,0)$, integrar $F$ a lo largo de la elipse de ejes $a$ y $b$ recorrida en sentido antihorario. 
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.65\linewidth]{Images T4/elipse.png}
+    \caption{Representación gráfica de la elipse y del campo vectorial $F(x,y)=(y,0)$}
+\end{figure}
+
+La parametrización de la elipse y su derivada son:
+
+\begin{equation}
+    \begin{gathered}
+    c(t) = (a\cos t,b\sin t) \quad t \in [0,2\pi) \\
+    \dot{c}(t) = (-a \sin t, b \cos t)
+    \end{gathered}
+\end{equation}
+
+\newpage
+
+Si evaluamos el valor del campo $F$ a lo largo de la elipse obtenemos:
+
+\begin{equation}
+    F(c(t)) = (-b\sin t,0)
+\end{equation}
+
+Por tanto el producto vectorial es:
+
+\begin{equation}
+    F(c(t)) \dot{c}(t) = ab \sin^2t =ab \frac{1-\cos 2t}{2}
+\end{equation}
+
+Por tanto, el valor de la integral es:
+
+\begin{equation}
+    \int_c F(x,y)ds = \int_0^{2\pi} \frac{ab}{2}t \Big|_0^{2\pi} = ab\pi
+\end{equation}
+
+\section{Teorema de Green}
+
+El teorema de Green relaciona la integral a lo largo de una curva cerrada de una función vectorial con la integral de área dentro de una región. Consideremos una región $\mathcal{R}$ definida de tipo I:
+
+\begin{equation}
+    \{a\leq x \leq b, \; y_1(x)\leq y \leq y_2(x)\}
+\end{equation}
+
+donde $y_1$ e $y_2$ son las funciones que limitan la región. Podemos parametrizar la línea del límite inferior de la región como:
+
+\begin{equation}
+    x\in [a,b], \; c_1(x) = (x,y_1(x))
+\end{equation}
+
+y la superior como:
+
+\begin{equation}
+    x\in [a,b], \; c_2(x) = (x,y_2(x))
+\end{equation}
+
+En la siguiente figura podemos definir la región de tipo I de la elipse y parametrizar la frontera, teniendo en cuenta que el área de la elipse es $ab\pi$:
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.65\linewidth]{Images T4/regionElipse.png}
+    \caption{Región de integración de la elipse}
+\end{figure}
+
+\newpage
+
+El área de esa región es:
+
+\begin{equation}
+    \begin{gathered}
+        \int_R dxdy = \int_a^b \left [\int_{y_1(x)}^{y_2(x)} dy \right ] dx = \\
+        \int_a^b (y_2(x)-y_1(x))dx = \int_a^b y_2(x) - \int_a^b y_1(x)
+    \end{gathered}
+\end{equation}
+
+Si calculamos la integral de la función vectorial $F(x,y)=(y,0)$ a lo largo de $c_1(x)$ obtenemos:
+
+\begin{equation}
+    \int_c F(x) ds = \int_c y dx
+\end{equation}
+
+Teniendo en cuenta que $c_1(x)=(x,y_1(x))$ el elemento vectorial diferencial de arco es:
+
+\begin{equation}
+    ds = \dot{c}(x) dx = (1,\dot{y}_1(x))dx
+\end{equation}
+
+Por tanto el producto vectorial entre el campo y el diferencial de superficie es:
+
+\begin{equation}
+    F(x)ds = (y_1(x),0)\times (1,\dot{y}_1(x))dx = y_1(x)dx
+\end{equation}
+
+Por tanto la integral del campo vectorial a lo largo de la línea $c_1(x)$ es:
+
+\begin{equation}
+    \int_{c_1} F(x)ds = \int_{c_1}ydx = \int_a^b y_1(x)
+\end{equation}
+
+Esta integral corresponde con el área que hay entre la línea $y_1(x)$ y el eje X en el intervalo $[a,b]$ de $x$. El razonamiento para el límite superior de la región es el mismo, obteniendo que:
+
+\begin{equation}
+    \int_{c_2} F(x)ds = \int_{c_2} y dx = \int_a^b y_2(x)dx
+\end{equation}
+
+Si enlazamos la integral de línea de la función vectorial $(y,0)$ a lo largo de $c_2(x)$ y luefp $c_1(x)$ en sentido contrario obtenemos una curva cerrada $c$ en sentido horario, que corresponde al área de la región $\mathcal{R}$ encerrada por $c$:
+
+\begin{equation}
+    \begin{gathered}
+    \oint_c(y, 0) \mathrm{d} \mathbf{s}=\oint_{\mathbf{c}} y \mathrm{~d} x=\int_{\mathbf{c}_2} y \mathrm{~d} x-\int_{\mathbf{c}_1} y \mathrm{~d} x \\
+    =\int_a^b y_2(x)-\int_a^b y_1(x) \mathrm{d} x=\int_R \mathrm{~d} x \mathrm{~d} y
+    \end{gathered}
+\end{equation}
+
+El teorema de Green nos permite generalizar esta lógica a todo tipo de curvas cerradas:
+
+\begin{theorem}
+    La integral del campo vectorial $F(x,y)=(F_x(x,y),F_y(x,y))$ con $F_x$ y $F_y$ con derivadas primeras continuas en la región $\mathcal{R}$ a lo largo de una línea frontera $c$ de la región $\mathcal{R}$ recorrida en sentido antihorario es:
+
+    \begin{equation}
+        \oint_c F(x,y) ds = \int_R \left (\frac{\partial F_y}{\partial x} - \frac{\partial F_x}{\partial y} \right ) dxdy
+    \end{equation}
+\end{theorem}
+
+Para demostrarlo debemos descomponer la demostración en dos lemas y luego juntarlos:
+
+\begin{itemize}
+    \item Suponemos que la función vectorial $F(x,y)=F(F_x(x,y),0)$ y vamos a demostrar que:
+    \begin{equation}
+        \oint_c F(x,y)ds = \oint_c F_x(x,y)dx = \int_R -\frac{\partial F_x(x,y)}{\partial y} dxdy
+    \end{equation}
+    \item El otro lema a demostrar es que si $F(x,y)=(0,F_y(x,y))$ entonces:
+    \begin{equation}
+        \oint_c F(x,y)ds = \oint_c F_y(x,y)dy = \int_R \frac{\partial F_y(x,y)}{\partial x} dxdy
+    \end{equation}
+\end{itemize}
+
+A partir de estos dos resultados ya podemos demostrar el teorema de Green para una función $F(x,y)=(F_x(x,y),F_y(x,y))$.
+
+\par A continuación vamos a demostrar el teorema de Green aplicándolo a una función y una región concretas. Sea la función $F(x,y)=(x,y)$ y la región el disco de radio unidad $(x^2+y^2\leq 1)$ vamos a verificar el teorema de Green:
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.65\linewidth]{Images T4/thGreen.png}
+    \caption{Función y región a estudiar}
+\end{figure}
+
+El término de la derecha del teorema es cero de forma trivial:
+
+\begin{equation}
+    \frac{\partial F_y(x, y)}{\partial x}-\frac{\partial F_x(x, y)}{\partial y}=0
+    \end{equation}
+
+Para calcular el término de la izquierda primero tenemos que parametrizar la región en sentido antihorario:
+
+\begin{equation}
+    c(t)=(\cos t,\sin t) \quad t \in [0,2\pi) 
+\end{equation}
+
+Por tanto la integral de línea es:
+
+\begin{equation}
+    \oint_{\mathbf{c}}(x, y) \mathrm{d} \mathbf{s}=\int_0^{2 \pi}\overbrace{(\cos t, \sin t)}^{F(c(t))}\overbrace{(-\sin t, \cos t)}^{\dot{c}(t)} \mathrm{d} t=0
+    \end{equation}
+
+\newpage
+
+\section{Gradiente, divergencia y rotacional. Operador nabla}
+
+Definimos el operador nabla como:
+
+\begin{equation}
+    \nabla = \left (\frac{\partial}{\partial x},\frac{\partial}{\partial y},\frac{\partial}{\partial z}\right )
+\end{equation}
+
+Si aplicamos el operador nabla sobre un campo escalar $f(x,y,z)$ obtenemos un gradiente:
+
+\begin{equation}
+    \nabla f(x,y,z) = \left (\frac{\partial f}{\partial x},\frac{\partial f}{\partial y},\frac{\partial f}{\partial z}\right )
+\end{equation}
+
+Si volvemos a aplicar el gradiente obtenemos el laplaciano:
+
+\begin{equation}
+    \nabla(\nabla f) = \nabla^2 f = \left (\frac{\partial^2 f}{\partial x^2},\frac{\partial^2 f}{\partial y^2},\frac{\partial^2 f}{\partial z^2}\right )
+\end{equation}
+
+Si ahora lo aplicamos sobre un campo vectorial $F(x,y,z)=(F_x,F_y,F_z)$ obtenemos la divergencia:
+
+\begin{equation}
+    \nabla \cdot \mathbf{F} = \frac{\partial F_x}{\partial x} + \frac{\partial F_y}{\partial y} + \frac{\partial F_z}{\partial z}
+\end{equation}
+
+y el rotacional:
+
+\begin{equation}
+    \nabla \times \mathbf{F}=\left|\begin{array}{ccc}
+    \mathbf{i} & \mathbf{j} & \mathbf{k} \\
+    \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\
+    F_x & F_y & F_z
+    \end{array}\right|
+    \end{equation}
+
+Estos son los resultados de aplicar el operador nabla a diferentes campos, obteniendo resultados muy diferentes. Por otro lado, el resultado de aplicar el rotacional a un gradiente viene dado por el siguiente teorema:
+
+\begin{theorem}
+    Sea $f(x,y,z)$ un campo escalar con derivadas segundas continuas, se cumple que el rotacional de su gradiente es nulo, $ \nabla \times \nabla f =0$:
+\end{theorem}
+
+\begin{equation}
+    \begin{gathered}
+    \nabla \times \nabla f=\left|\begin{array}{ccc}
+    \mathbf{i} & \mathbf{j} & \mathbf{k} \\
+    \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\
+    \frac{\partial f}{\partial x} & \frac{\partial f}{\partial y} & \frac{\partial f}{\partial z}
+    \end{array}\right| \\
+    =\left(\left(\frac{\partial^2 f}{\partial y \partial z}-\frac{\partial^2 f}{\partial z \partial y}\right),\left(\frac{\partial^2 f}{\partial z \partial x}-\frac{\partial^2 f}{\partial x \partial z}\right),\left(\frac{\partial^2 f}{\partial x \partial y}-\frac{\partial^2 f}{\partial y \partial x}\right)\right) = 0
+    \end{gathered}
+    \end{equation}
+
+Como las derivadas segundas con continuas podemos afirmar que las derivadas cruzadas son iguales, por lo que el resultado es cero.
+
+\par Un ejemplo, para observar esto gráficamente, es la función $f(x,y)=x^2+y^2$, que tiene por gradiente $\nabla f =(2x,2y)$, con rotacional nulo.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.65\linewidth]{Images T4/rotnulo.png}
+    \caption{Curvas de nivel de $f(x,y)=x^2+y^2$}
+\end{figure}
+
+Algo parecido pasa cuando calculamos la divergencia del rotacional de un campo vectorial, se anula siempre que las funciones componente del campo vectorial tengan derivadas segundas continuas:
+
+\begin{equation}
+    \begin{gathered}
+        \nabla \times F = \left(\frac{\partial F_z}{\partial y}-\frac{\partial F_y}{\partial z}, \frac{\partial F_x}{\partial z}-\frac{\partial F_z}{\partial x}, \frac{\partial F_y}{\partial x}-\frac{\partial F_x}{\partial y}\right) \\
+        \nabla \cdot (\nabla \times F) = \frac{\partial}{\partial x}\left (\frac{\partial F_z}{\partial y}-\frac{\partial F_y}{\partial z}\right ) + \frac{\partial }{\partial y} \left (\frac{\partial F_x}{\partial z}-\frac{\partial F_z}{\partial x} \right ) + \frac{\partial }{\partial z} \left (\frac{\partial F_y}{\partial x}-\frac{\partial F_x}{\partial y} \right ) = 0
+    \end{gathered}
+\end{equation}
+
+Como las derivadas segundas son continuas, las derivadas cruzadas son iguales y se anulan, por lo que el resultado es 0.
+
+\newpage
+
+\subsection{Propiedades del operador nabla}
+
+\begin{theorem}
+    Sean $f$ y $g$ campos escalares y  $F$ y $G$ campos vectoriales con derivadas segundas continuas y $c$ una constante arbitraria, se cumple que:
+\end{theorem}
+
+\begin{equation}
+    \begin{aligned}
+    & \nabla (f+g) = \nabla f + \nabla g \\
+    & \nabla (cf) = c \nabla f \\
+    & \nabla(f g)=(\nabla f) g+f(\nabla g) \\
+    & \nabla(f / g)=(\nabla f) g-f(\nabla g) / g^2 \\
+    & \nabla(\mathbf{F}+\mathbf{G})=\nabla \mathbf{F}+\nabla \mathbf{G} \\
+    & \nabla \times(\mathbf{F}+\mathbf{G})=\nabla \times \mathbf{F}+\nabla \times \mathbf{G} \\
+    & \nabla(f \mathbf{F})=f(\nabla \mathbf{F})+(\nabla f) \mathbf{F} \\
+    & \nabla(\mathbf{F} \times \mathbf{G})=\mathbf{G}(\nabla \times \mathbf{F})-\mathbf{F}(\nabla \times \mathbf{G}) \\
+    & \nabla(\nabla \times \mathbf{F})=0 \\
+    & \nabla \times(f \mathbf{F})=f \nabla \times \mathbf{F}+\nabla f \times \mathbf{F} \\
+    & \nabla \times \nabla f=0 \\
+    & \nabla^2(f g)=f \nabla^2 g+g \nabla^2 f-2(\nabla f)(\nabla g) \\
+    & \nabla(\nabla f \times \nabla g)=0 \\
+    & \nabla(f \nabla g-g \nabla f)=f \nabla^2 g-g \nabla^2 f
+    \end{aligned}
+    \end{equation}
+
+\subsection{Campos conservativos}
+
+Por definición, un campo conservativo es aquel en que la integral de línea a lo largo de cualquier trayectoria que une un punto A con un punto B vale siempre lo mismo. Matemáticamente podemos expresar esto como que la integral a través de cualquier trayectoria cerrada es nula:
+
+\begin{equation}
+    \oint_c F ds =0
+\end{equation}
+
+\begin{theorem}
+    Un campo vectorial $F(x,y)=(F_x(x,y),F_y(x,y))$ es conservativo si y solo si:
+    \begin{equation}
+        \frac{\partial F_y}{\partial x} - \frac{\partial F_x}{\partial y} = 0
+    \end{equation}
+\end{theorem}
+
+Podemos demostrar este teorema a partir del teorema de Green:
+
+\begin{equation}
+    \oint_c F(x,y) ds = \int_R \left (\frac{\partial F_y}{\partial x} - \frac{\partial F_x}{\partial y} \right ) dxdy
+\end{equation}
+
+\begin{itemize}
+    \item Si el campo es conservativo:
+    \begin{equation}
+        \oint_c F(x,y) ds = 0 \Rightarrow \frac{\partial F_y}{\partial x} - \frac{\partial F_x}{\partial y} = 0
+    \end{equation}
+    \item Si el campo no es conservativo:
+    \begin{equation}
+        \oint_c F(x,y) ds \neq 0 \Rightarrow \frac{\partial F_y}{\partial x} - \frac{\partial F_x}{\partial y} \neq 0
+    \end{equation}
+\end{itemize}
+
+A parte de esa restricción, podemos establecer otra restricción aún más fuerte para que un campo sea conservativo:
+
+\begin{theorem}
+    El campo $F(x,y,z)=(F_x(x,y,z),F_y(x,y,z),F_z(x,y,z))$ es conservativo si y solo si existe un campo escalar $U(x,y,z)$ tal que se cumpla que:
+    \begin{equation}
+        F(x,y,z) = \nabla U(x,y,z)
+    \end{equation}
+\end{theorem}
+
+Para demostrarlo partiremos de la definición de campo conservativo, suponemos una curva $C$ cualquiera que podemos suponer sin pérdida de generalidad que tiene el origen en $(0,0,0)$ y lo une con un punto arbitrario $(x,y,z)$. Supongamos que la curva $C$ está representada por la parametrización $c$. Definimos $f(x,y,z)$ como la integral $\int_c F \cdot ds$. Por ser un campo conservativo el valor de $f(x,y,z)$ es independiente de la curva escogida, por lo que escogeremos la trayectoria mostrada en la siguiente imagen:
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.65\linewidth]{Images T4/camposCgradiente.png}
+    \caption{Trayectoria en la que integramos}
+\end{figure}
+
+\newpage
+
+El valor de la $f(x,y,z)$ es por tanto:
+
+\begin{equation}
+    f(x, y, z)=\int_0^x F_x(t, 0,0) d t+\int_0^y F_y(x, t, 0) d t+\int_0^z F_z(x, y, t) d t
+\end{equation}
+
+Donde $F=(F_x(x,y,z),F_y(x,y,z),F_z(x,y,z))$. A partir del teorema fundamental del cálculo podemos afirmar que:
+
+\footnote{Th. fundamental del cálculo: $F(x)=\int_a^x f(t)dt \quad F^{\prime}(c)=f(c)$}
+
+\begin{equation}
+    F_z = \frac{\partial f}{\partial z}
+\end{equation}
+
+Si repetimos este proceso con trayectorias diferentes para llegar al punto $(x,y,z)$ podremos ver que las componentes del campo coinciden con las del gradiente, quedando así demostrado que $F= \nabla f$. Debemos notar entonces que si $F$ tiene uno o más puntos excepcionales donde está definido entonces el campo escalar del que deriva tampoco está definido ahí.
+
+\par A partir de esta propiedad podemos deducir que los campos conservativos son irrotacionales, ya que el rotacional de un gradiente es siempre cero.
+
+\par En resumen, las siguientes afirmaciones sobre un campo conservativo son equivalentes:
+
+\begin{itemize}
+    \item La integral a través de cualquier curva cerrada es cero \begin{equation}
+        \oint_C F\cdot ds 0
+    \end{equation}
+    \item Para dos trayectorias $C_1$ y $C_2$ con los mismos extremos:
+    \begin{equation}
+        \int_{C_1} F \cdot ds = \int_{C_2} F\cdot ds
+    \end{equation}
+    \item $F$ es el gradiente de un campo escalar \begin{equation}
+        F = \nabla U
+    \end{equation}
+    \item El campo es irrotacional \begin{equation}
+        \nabla \times F =0
+    \end{equation}
+\end{itemize}
+
+Una aplicación de las propiedades anteriores es que podemos calcular el campo escalar del que deriva un determinado campo conservativo, por ejemplo $F(x,y)=(2xy+y^3,x^2+3xy^2+y^2)$.
+
+\par Tomamos como $(x_0,y_0)$ el origen, por lo que el campo tiene la siguiente expresión:
+
+\begin{equation}
+    U(x, y)=\int_0^x\left(2 x y+y^3\right) \mathrm{d} x+g(y)=x^2 y+x y^3+g(y)
+\end{equation}
+
+Entonces encontramos que:
+
+\begin{equation}
+    F_y=\frac{\partial U}{\partial y} \rightarrow x^2+3 x y^2+2 y=x^2+3 x y^2+\frac{\mathrm{d} g(y)}{\mathrm{d} y}
+    \end{equation}
+
+De esta forma podemos calcular el valor de $g(y)$:
+
+\begin{equation}
+    \frac{\mathrm{d} g(y)}{\mathrm{d} y}=2 y \rightarrow g(y)=y^2+C
+    \end{equation}
+
+Por tanto, el valor final del campo es:
+
+\begin{equation}
+    U(x,y) = x^2y+xy^3+y^2 + C
+\end{equation}
+
+\begin{theorem}
+    Sea $U(x,y)$ un campo escalar con derivadas segundas continuas, entonces la integral de su gradiente a lo largo de una trayectoria $c$ que une $A$ y $B$ es la diferencia de $U$ entre $B$ y $A$:
+
+    \begin{equation}
+        \int_c \nabla U ds = U(B)-U(A)
+    \end{equation}
+\end{theorem}
+
+Para demostrarlo vamos a considerar la trayectoria $c(t)$ parametrizada en $t\in [a,b]$, donde $c(a)=A$ y $c(b)=B$:
+
+\begin{equation}
+    \int_c \nabla U ds = \int_a^b \nabla U (c(t))\dot{c}(t) dt
+\end{equation}
+
+Aplicando la regla de la cadena:
+
+\begin{equation}
+    = \int_a^b \frac{dU(c(t))}{dt} dt = U(c(t)) \Big|_a^b = U(c(b))-U(c(a)) =U(B)-U(A)
+\end{equation}
+
+En física tenemos una gran cantidad de ejemplos de campos conservativos, como el gravitatorio o el eléctrico. Otro ejemplo es la relación entre fuerza y energía potencial. La fuerza sobre un móvil viene del gradiente de una energía potencial, $F=-\nabla U$, que define la conservación de energía. Consideramos un móvil de masa $m$ con una trayectoria en función del tiempo $c(t)$. Su energía es la suma de la potencial y la cinética:
+
+\begin{equation}
+    E(t) = \frac{1}{2} m \dot{c}^2(t) + U(c(t))
+\end{equation}
+
+Si derivamos esta expresión respecto a $t$ y aplicamos la regla de la cadena obtenemos:
+
+\begin{equation}
+    \frac{\mathrm{d} E}{\mathrm{~d} t}=m \dot{\mathbf{c}}(t) \ddot{\mathbf{c}}(t)+\nabla U(\mathbf{c}(t)) \dot{\mathbf{c}}(t)=[m \ddot{\mathbf{c}}(t)+\nabla U(\mathbf{c}(t))] \dot{\mathbf{c}}(t)=0
+    \end{equation}
+
+Para que la última igualdad sea cierta y la energía se conserve tiene que cumplirse que:
+
+\begin{equation}
+    F = -\nabla U = m \ddot{c}(t)
+\end{equation}
+
+\section{Integral en superficies}
+
+\subsection{Repaso de parametrización de superficies}
+
+Para parametrizar cualquier superficie (Un plano por ejemplo) necesitamos dos parámetros. De esta forma podemos expresar la superficie como una función vectorial $\sigma (u,v)$ definida en un espacio $(u,v)$ de $\mathbb{R}^2$.
+
+\begin{equation}
+    \sigma (u,v) = \left (x(u,v),y(u,v),z(u,v)\right )
+\end{equation}
+
+Un ejemplo de estos es la parametrización de un cilindro de radio $r$ centrado en el origen en función de $\phi y z$:
+
+\begin{equation}
+    \sigma(\phi, z)=(r \cos \phi, r \sin \phi, z), \phi \in[0,2 \pi), z \in \mathbb{R}
+    \end{equation}
+
+Otro ejemplo de superficie parametrizada es una esfera de radio $r$:
+
+\begin{equation}
+    \sigma(\theta, \phi)=(r \sin \theta \cos \phi, r \sin \theta \sin \phi, r \cos \theta), \theta \in[0, \pi], \phi \in[0,2 \pi)
+    \end{equation}
+
+En la siguiente figura podemos ver una representación de la parametrización:
+
+\newpage
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.45\linewidth]{Images T4/esferaparametrizada.png}
+    \caption{Parametrización de una esfera de radio 1}
+\end{figure}
+
+Si observamos las líneas de la superficie podemos ver que cada una de ellas corresponde al caso en que uno de los dos parámetros, en este caso $\theta$ y $\phi$, son constantes y la otra variable recorre los posibles valores de su rango.
+
+\par La superficie se construyó a partir de las líneas maestras, fijamos una variable, por ejemplo $u=u'$ y recorremos la otra variable $v$ en su rango, $[v_0,v_f]$ obteniendo las líneas maestras a lo largo de $v$. En la siguiente figura podemos ver las líneas maestras de la esfera:
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.45\linewidth]{Images T4/lineasmaestrasesfera.png}
+    \caption{Líneas maestras de nuestra esfera de radio 1}
+\end{figure}
+
+En un punto de la superficie podemos obtener los vectores tangentes a las líneas de superficie en ese punto, asociados al diferencial vectorial de arco de cada línea maestra:
+
+\begin{equation}
+    t_u = \frac{\partial \sigma(u,v)}{\partial u} \quad t_v = \frac{\partial \sigma(u,v)}{\partial v}
+\end{equation}
+
+El vector normal a los dos vendrá dado por:
+
+\begin{equation}
+    \mathbf{n} = t_u \times t_v
+\end{equation}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.55\linewidth]{Images T4/vecNormal.png}
+    \caption{Vector normal a la superficie}
+\end{figure}
+
+Este vector es la normal a los dos vectores y su módulo corresponde con el área del paralelogramo entre $t_u$ y $t_v$. El diferencial de área es:
+
+\begin{equation}
+    d\vec{\sigma} = \mathbf{n} \,dudv \Rightarrow d\sigma = |\mathbf{n}|dudv
+\end{equation}
+
+Una superficie se dice regular si existe vector normal a ella en todo el rango de $(u,v)$. A partir del vector normal a una superficie $\sigma(u,v)$ podemos calcular el valor del área de la superficie, calculando la siguiente integral:
+
+\begin{equation}
+    S = \int_{\sigma} d\sigma = \int_R |\mathbf{n}|dudv = \int_R |t_u \times t_v| du dv
+\end{equation}
+
+Por ejemplo, podemos calcular la superficie de una esfera de radio $r$, que se parametriza de la siguiente forma:
+
+\begin{equation}
+    \vec{\sigma}(\theta,\phi) = (r \sin \theta \cos \phi ,r \sin \theta \sin \phi , r \cos \theta) \quad \theta \in [0,\pi], \phi \in [0,2\pi)
+\end{equation}
+
+Los vectores directores son:
+
+\begin{equation}
+    \begin{gathered}
+        t_{\theta} = \frac{\partial \vec{\sigma}}{\partial \theta} =(r \cos \theta \cos \phi, r \cos \theta \sin \phi,-r \sin \theta) \\
+        t_{\phi} = \frac{\partial \vec{\sigma}}{\partial \phi} = (-r \sin \theta \sin \phi, r \sin \theta \cos \phi, 0)
+    \end{gathered}
+\end{equation}
+
+Por tanto el vector normal es:
+
+\begin{equation}
+    \begin{gathered}
+    \mathbf{n}=\left|\begin{array}{ccc}
+    \mathbf{i} & \mathbf{j} & \mathbf{k} \\
+    r \cos \theta \cos \phi & r \cos \theta \sin \phi & -r \sin \theta \\
+    -r \sin \theta \sin \phi & r \sin \theta \cos \phi & 0
+    \end{array}\right| \\
+    \mathbf{n}= \left(r^2 \sin ^2 \theta \cos \phi, r^2 \sin ^2 \theta \sin \phi, r^2 \cos \theta \sin \theta\right)
+    \end{gathered}
+\end{equation}
+
+El módulo del vector normal, que coincide con el determinante jacobiano del cambio de variable a esféricas es:
+
+\begin{equation}
+    |\mathbf{n}|= r^2\sin \theta
+\end{equation}
+
+Por tanto, el área de la superficie es:
+
+\begin{equation}
+    \begin{aligned}
+    S=\int_\sigma \mathrm{d} \sigma & =\int_R|\mathbf{n}| \mathrm{d} u \mathrm{~d} v=\int_0^\pi \int_0^{2 \pi} r^2 \sin \theta \mathrm{d} \phi \mathrm{d} \theta \\
+    & =\left.\left.r^2 \phi\right|_0 ^{2 \pi}(-\cos \theta)\right|_0 ^\pi=4 \pi r^2
+    \end{aligned}
+    \end{equation}
+
+\subsection{Parametrización de la superficie de una gráfica}
+
+Si la superficie a parametrizar es la gráfica de una superficie la parametrización es muy sencila, solo depende de $x$ e $y$:
+
+\begin{equation}
+    \sigma(x,y) = (x,y,f(x,y)) \quad x,y\in \mathbb{R}
+\end{equation}
+
+Los vectores directores y el vector normal tienen expresiones muy simples:
+
+\begin{equation}
+    \begin{gathered}
+    \mathbf{t}_x(x, y)  =\left(1,0, \frac{\partial z}{\partial x}\right) \\
+    \mathbf{t}_y(x, y)  =\left(0,1, \frac{\partial z}{\partial y}\right) \\
+    \mathbf{n}=\left|\begin{array}{ccc}
+        \mathbf{i} & \mathbf{j} & \mathbf{k} \\
+        1 & 0 & \frac{\partial z}{\partial x} \\
+        0 & 1 & \frac{\partial z}{\partial y}
+        \end{array}\right|=\left(-\frac{\partial z}{\partial x},-\frac{\partial z}{\partial y}, 1\right)
+    \end{gathered}
+    \end{equation}
+
+\newpage
+
+Donde el módulo del vector normal es:
+
+\begin{equation}
+    |\mathbf{n}|=\sqrt{1+\left(\frac{\partial z}{\partial x}\right)^2+\left(\frac{\partial z}{\partial y}\right)^2}
+    \end{equation}
+
+También podemos expresar esta parametrización en función del ángulo que forma el vector normal con el eje Z:
+
+\begin{equation}
+    \cos \gamma = |\hat{n}\cdot \hat{k}| \Rightarrow d\vec{\sigma} = \frac{dxdy}{\cos \gamma}
+\end{equation}
+
+\subsection{Integrales de superficie}
+
+\subsubsection{Funciones escalares}
+
+Para una función escalar $f(x,y,z)$ la integral a lo largo de una superficie S es:
+
+\begin{equation}
+    \int_S f(x, y, z) \mathrm{d} \sigma=\int_R f(\sigma(u, v))|\mathbf{n}| \mathrm{d} u \mathrm{~d} v
+    \end{equation}
+
+Ejemplo: Integrar la función $f(x,y,z)=\sqrt{x^2+y^2+z}$ en el helicoloide dado por $\sigma(r,\theta)=(r \cos \theta, r \sin \theta ,\theta) \quad \theta \in [0,2\pi), r \in[0,1]$:
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.65\linewidth]{Images T4/integralsuperficie1.png}
+    \caption{Superficie: $\sigma(r,\theta)=(r \cos \theta, r \sin \theta ,\theta) \quad \theta \in [0,2\pi), r \in[0,1]$}
+\end{figure}
+
+Los vectores directores y el vector normal son:
+
+\begin{equation}
+    \begin{gathered}
+    \mathbf{t}_r=(\cos \theta, \sin \theta, 0) \\
+    \mathbf{t}_\theta=(-r \sin \theta, r \cos \theta, 1)
+    \end{gathered} \\
+    \Rightarrow \mathbf{n}=\left|\begin{array}{ccc}
+        \mathbf{i} & \mathbf{j} & \mathbf{k} \\
+        \cos \theta & \sin \theta & 0 \\
+        -r \sin \theta & r \cos \theta & 1
+        \end{array}\right|=(\sin \theta,-\cos \theta, r)
+    \end{equation}
+
+Si evaluamos la función en la superficie obtenemos:
+
+\begin{equation}
+    f(\vec{\sigma}(r,\theta)) = \sqrt{r^2 \cos^2 \theta + r^2 \sin^2 \theta +1} = \sqrt{r^2+1}
+\end{equation}
+
+El diferencial de área es:
+
+\begin{equation}
+    d\vec{\sigma} = |\mathbf{n}| d\theta dr = \sqrt{r^2+1}
+\end{equation}
+
+Por lo que la integral a lo largo de la superficie es:
+
+\begin{equation}
+    \begin{aligned}
+    & \int_\sigma f(x, y, z) \mathrm{d} \sigma=\int_0^{2 \pi} \int_0^1 \sqrt{r^2+1} \sqrt{r^2+1} \mathrm{~d} r \mathrm{~d} \theta \\
+    & =\int_0^{2 \pi} \int_0^1\left(r^2+1\right) \mathrm{d} r \mathrm{~d} \theta=\left.2 \pi\left(r+\frac{r^3}{3}\right)\right|_0 ^1=\frac{8 \pi}{3}
+    \end{aligned}
+    \end{equation}
+
+\subsubsection{Funciones vectoriales}
+
+Sea una función vectorial $F(x,y,z)=(F_x,F_y,F_z)$ y una superficie S, la integral de $F$ a lo largo de la superficie es:
+
+\begin{equation}
+    \int_\sigma \mathbf{F}(x, y, z) \mathrm{d} \vec{\sigma}=\int_R \mathbf{F}(\sigma(u, v)) \mathbf{n} \mathrm{d} u \mathrm{~d} v
+    \end{equation}
+
+    \begin{wrapfigure}{r}{0.5\textwidth}
+        \begin{center}
+        \includegraphics[width=0.4\textwidth]{Images T4/flujogauss.png}
+        \end{center}
+        \caption{Ejemplo de flujo del campo eléctrico}
+    \end{wrapfigure}
+
+Una interpretación física de este concepto es el flujo, que mide las líneas de un determinado campo que pasan por una superficie, tiene una aplicación directa en la ley de Gauss, por ejemplo.
+
+Un ejemplo de integral de superficie de un campo vectorial es el campo $F(x,y,z)=(x,y,z)$ sobre la esfera de radio unidad centrada en el origen, que podemos ver a continuación:
+
+\newpage
+
+El vector normal, calculado antes, es:
+
+\begin{equation}
+    \mathbf{n}=\left(\sin ^2 \theta \cos \phi, \sin ^2 \theta \sin \phi, \cos \theta \sin \theta\right)
+    \end{equation}
+
+Si evaluamos el campo en la esfera obtenemos que:
+
+\begin{equation}
+    \mathbf{F}(\sigma(\theta, \phi))=(\sin \theta \cos \phi, \sin \theta \sin \phi, \cos \theta)
+    \end{equation}
+
+Si operamos vamos a obtener el siguiente integrando:
+
+\begin{equation}
+    \mathbf{F}(\sigma(\theta, \phi)) \mathbf{n}=\sin ^3 \theta \cos ^2 \phi+\sin ^3 \theta \sin ^2 \phi+\sin \theta \cos ^2 \theta=\sin \theta
+    \end{equation}
+
+Por lo que la integral tiene el siguiente resultado:
+
+\begin{equation}
+    \int_\sigma \mathbf{F}(\mathbf{x}) \mathrm{d} \vec{\sigma}=\int_0^{2 \pi} \int_0^\pi \sin \theta \mathrm{d} \theta \mathrm{d} \phi=4 \pi
+    \end{equation}
+
+\section{Teoremas integrales}
+
+\subsection{Teorema de Stokes}
+
+Este teorema es una extensión del teorema de Green a 3D y dice que:
+
+\begin{theorem}{Th. de Stokes}
+    Sea una superficie $S$ orientable, cuya frontera $c(t)$ se recorre en sentido antihorario, y parametrizada con $\sigma(u,v)$, con $u,v$ definidas en una región $R$. Sea un campo vectorial con derivadas primeras continuas $F(x,y,z)=(F_x,F_y,F_z)$ se cumple que:
+    \begin{equation}
+        \int_S \vec{\nabla} \times F d\vec{\sigma} = \oint_c F ds
+    \end{equation} 
+\end{theorem}
+
+El teorema de Stokes relaciona el flujo del rotacional a través de la superficie $S$ con la circulación del campo a través de su frontera. Esto nos permite cambiar una integral de superficie por una circulación o viceversa, en función de la que sea más fácil de calcular.
+
+\par Como ejemplo, vamos a verificar el teorema de Stokes en la superficie dada por la intersección del cilindro infinito $x^2+y^2=1$ y el plano $x+y+z=1$, para el campo $F(x,y,z)=(-y^3,x^3,z^3)$:
+
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}{0.32\textwidth}
+        \centering
+        \includegraphics[width=1.1\linewidth]{Images T4/stokes1.png}
+        \subcaption{Región a integrar}
+    \end{subfigure}
+    \begin{subfigure}{0.32\textwidth}
+        \centering
+        \includegraphics[width=1.1\linewidth]{Images T4/stokes2.png}
+        \subcaption{$\int_S \vec{\nabla} \times F d\vec{\sigma}$}
+    \end{subfigure}
+    \begin{subfigure}{0.32\textwidth}
+        \centering
+        \includegraphics[width=1.1\linewidth]{Images T4/stokes3.png}
+        \subcaption{$\oint_c F ds$}
+    \end{subfigure}
+\end{figure}
+
+La parametrización de la superficie viene dada por expresar el plano como una gráfica en función de $x,y$:
+
+\begin{equation}
+    \sigma(x, y)=(x, y, 1-x-y), \quad x^2+y^2 \leq 1
+\end{equation}
+
+El vector normal se obtiene fácilmente, es el vector normal al plano:
+
+\begin{equation}
+    \mathbf{n} = (1,1,1) 
+\end{equation}
+
+La parametrización de la frontera y su derivada son:
+
+\begin{equation}
+    \begin{gathered}
+    \mathbf{c}(t) = (\cos t, \sin t, 1 - \cos t - \sin t), \quad t\in[0,2\pi) \\
+    \dot{\mathbf{c}}(t) = (-\sin t, \cos t, \sin t + \cos t)
+\end{gathered}
+\end{equation}
+
+El rotacional del campo vectorial es:
+
+\begin{equation}
+    \nabla \times \mathbf{F}=\left|\begin{array}{ccc}
+    \mathbf{i} & \mathbf{j} & \mathbf{k} \\
+    \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\
+    -y^3 & x^3 & z^3
+    \end{array}\right|=\left(0,0,3 x^2+3 y^2\right)
+    \end{equation}
+
+Por tanto, la integral de superficie es:
+
+\begin{equation}
+    \begin{array}{r}
+    \int_S \nabla \times \mathbf{F} \mathrm{d} \vec{\sigma}=\int_R\left(0,0,3 x^2+3 y^2\right)(1,1,1) \mathrm{d} x \mathrm{~d} y \\
+    =\int_R 3\left(x^2+y^2\right) \mathrm{d} x \mathrm{~d} y
+    \end{array}
+    \end{equation}
+
+La región de integración es el disco de radio unidad, que resulta muy cómodo expresarlo en coordenadas polares:
+
+\begin{equation}
+    \int_0^{2 \pi} \int_0^1 3 r^2 r \mathrm{~d} r \mathrm{~d} \phi=\left.\frac{3}{4} r^4\right|_0 ^1 2 \pi=\frac{3 \pi}{2}
+    \end{equation}
+
+De esta forma calculamos uno de los lados del teorema, el de la integral de superficie, ahora hay que calcular la integral de línea a lo largo de la frontera:
+
+\begin{equation}
+    \begin{gathered}
+    \oint_{\mathbf{c}} \mathbf{F} \mathrm{d} \mathbf{s}=\oint_{\mathbf{c}}-y^3 \mathrm{~d} x+x^3 \mathrm{~d} y+z^3 \mathrm{~d} z \\
+    =\int_0^{2 \pi}\left(-\sin ^3 \phi, \cos ^3 \phi,(1-\cos \phi-\sin \phi)^3\right)(-\sin \phi, \cos \phi, \sin \phi-\cos \phi) \mathrm{d} \phi \\
+    =\int_0^{2 \pi}\left(\sin ^4 \phi+\cos ^4 \phi+(1-\cos \phi-\sin \phi)^3(\sin \phi-\cos \phi)\right) \mathrm{d} \phi
+    \end{gathered}
+    \end{equation}
+
+Dividimos esta integral en dos:
+
+\begin{equation}
+    \int_0^{2 \pi}\left(\sin ^4 \phi+\cos ^4 \phi\right) \mathrm{d} \phi+\int_0^{2 \pi}(1-\cos \phi-\sin \phi)^3(\sin \phi-\cos \phi) \mathrm{d} \phi
+    \end{equation}
+
+Si operamos la primera integral:
+
+\begin{equation}
+    \begin{gathered}
+    \sin ^4 \phi+\cos ^4 \phi=\frac{1}{4}(1-\cos 2 \phi)^2+\frac{1}{4}(1+\cos 2 \phi)^2 \\
+    =\frac{1}{4}\left(1+\cos ^2 2 \phi-2 \cos 2 \phi+1+\cos ^2 2 \phi+2 \cos 2 \phi\right) \\
+    =\frac{1}{2}\left(1+\cos ^2 2 \phi\right)=\frac{1}{2}\left(1+\frac{1}{2}(1+\cos 4 \phi)\right)
+    \end{gathered}
+    \end{equation}
+
+De esta forma llegamos a una integral que podemos resolver:
+
+\begin{equation}
+    \int_0^{2 \pi}\left(\frac{3}{4}+\frac{1}{4} \cos 4 \phi\right) \mathrm{d} \phi=\left.\left(\frac{3 \phi}{4}+\frac{1}{16} \sin 4 \phi\right)\right|_0 ^{2 \pi}=\frac{3 \pi}{2}
+    \end{equation}
+
+La segunda integral se calcula directamente:
+
+\begin{equation}
+    \int_0^{2 \pi}(1-\cos \phi-\sin \phi)^3(\sin \phi-\cos \phi) \mathrm{d} \phi=\left.\frac{1}{4}(1-\cos \phi-\sin \phi)^4\right|_0 ^{2 \pi}=0
+    \end{equation}
+
+Sumando las integrales vemos que se cumple el teorema de Stokes.
+
+\newpage
+
+\subsection{Teorema de Ostrogradski-Gauss}
+
+Es una extensión del teorema de la divergencia a 3D y relaciona una integral la integral de un campo vectorial con la integral de volumen de la divergencia.
+
+\begin{theorem}{Th.de Gauss}
+    Sea $V$ un volumen regular limitado por la superficie cerrada $S$ y sea $F(x,y,z)=(F_x,F_y,F_z)$ un campo vectorial con derivadas primeras continuas se cumple que:
+    \begin{equation}
+        \oint_S F d \vec{\sigma} = \int_V \vec{\nabla} \cdot F dxdydz
+    \end{equation}
+    Donde la normal de la superficie cerrada está definida hacia el exterior de la superficie.
+\end{theorem}
+
+Como ejemplo, vamos a verificar el teorema de Gauss para el campo $F(x,y,z)=(x,y,z)$ en la esfera de radio unidad:
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.65\linewidth]{Images T4/thgauss1.png}
+    \caption{Campo vectorial y región a estudiar}
+\end{figure}
+
+La divergencia del campo se calcula de forma trivial, por lo que la integral de volumen es:
+
+\begin{equation}
+    \vec{\nabla} F=3 \Rightarrow \int_V 3 dxdydz = 3\frac{4\pi}{3} = 4\pi
+\end{equation}
+
+Queda calcular el otro lado de la igualdad, vamos a parametrizar la esfera en esféricas, empleando el resultado de antes:
+
+\begin{equation}
+    \begin{gathered}
+    \mathbf{n}(\theta, \phi)=(\sin \theta \cos \phi, \sin \theta \sin \phi, \cos \theta) \sin \theta \\
+    \mathbf{F}(\theta, \phi)=(\sin \theta \cos \phi, \sin \theta \sin \phi, \cos \theta)
+    \end{gathered}
+    \end{equation}
+
+Operando llegamos a:
+
+\begin{equation}
+    \mathbf{F}\cdot \mathbf{n}=\sin \theta
+\end{equation}
+
+Por tanto la integral de superficie es:
+
+\begin{equation}
+    \oint_S \mathbf{F} \mathrm{d} \vec{\sigma}=\int_0^\pi \int_0^{2 \pi} \sin \theta \mathrm{d} \theta \mathrm{d} \phi=\left.\left.\phi\right|_0 ^{2 \pi}(-\cos \theta)\right|_0 ^\pi=4 \pi
+    \end{equation}
+
+
+
+
+
+
+
+\end{document}

@@ -1,0 +1,515 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.18)  22 MAY 2023 16:46
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**"c:/Users/gbast/OneDrive/Escritorio/Física/metodos 3/Resúmenes/tema4.tex"
+(c:/Users/gbast/OneDrive/Escritorio/Física/metodos 3/Resúmenes/tema4.tex
+LaTeX2e <2022-11-01> patch level 1
+L3 programming layer <2023-02-22> (c:/texlive/2022/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2022/07/02 v1.4n Standard LaTeX document class
+(c:/texlive/2022/texmf-dist/tex/latex/base/size12.clo
+File: size12.clo 2022/07/02 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count185
+\c@section=\count186
+\c@subsection=\count187
+\c@subsubsection=\count188
+\c@paragraph=\count189
+\c@subparagraph=\count190
+\c@figure=\count191
+\c@table=\count192
+\abovecaptionskip=\skip48
+\belowcaptionskip=\skip49
+\bibindent=\dimen140
+) (c:/texlive/2022/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2021/02/14 v1.3d Input encoding file
+\inpenc@prehook=\toks16
+\inpenc@posthook=\toks17
+) (c:/texlive/2022/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+ (c:/texlive/2022/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks18
+) (c:/texlive/2022/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
+ (c:/texlive/2022/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
+) (c:/texlive/2022/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 107.
+ (c:/texlive/2022/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen141
+\Gin@req@width=\dimen142
+) (c:/texlive/2022/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2023/02/13 3.86 The Babel package
+\babel@savecnt=\count193
+\U@D=\dimen143
+\l@unhyphenated=\language87
+ (c:/texlive/2022/texmf-dist/tex/generic/babel/txtbabel.def)
+\bbl@readstream=\read2
+\bbl@dirlevel=\count194
+ (c:/texlive/2022/texmf-dist/tex/generic/babel-spanish/spanish.ldf
+Language: spanish.ldf 2021/05/27 v5.0q Spanish support from the babel system
+\es@quottoks=\toks19
+\es@quotdepth=\count195
+Package babel Info: Making " an active character on input line 570.
+Package babel Info: Making . an active character on input line 675.
+Package babel Info: Making < an active character on input line 722.
+Package babel Info: Making > an active character on input line 722.
+)) (c:/texlive/2022/texmf-dist/tex/generic/babel/locale/es/babel-spanish.tex
+Package babel Info: Importing font and identification data for spanish
+(babel)             from babel-es.ini. Reported on input line 11.
+) (c:/texlive/2022/texmf-dist/tex/latex/hyphenat/hyphenat.sty
+Package: hyphenat 2009/09/02 v2.3c hyphenation utilities
+\langwohyphens=\language88
+LaTeX Info: Redefining \_ on input line 43.
+) (c:/texlive/2022/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2022/03/01 v3.6b Customizing captions (AR)
+ (c:/texlive/2022/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2022/03/17 v2.3b caption3 kernel (AR)
+\caption@tempdima=\dimen144
+\captionmargin=\dimen145
+\caption@leftmargin=\dimen146
+\caption@rightmargin=\dimen147
+\caption@width=\dimen148
+\caption@indent=\dimen149
+\caption@parindent=\dimen150
+\caption@hangindent=\dimen151
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count196
+\c@continuedfloat=\count197
+) (c:/texlive/2022/texmf-dist/tex/latex/caption/subcaption.sty
+Package: subcaption 2022/01/07 v1.5 Sub-captions (AR)
+\c@subfigure=\count198
+\c@subtable=\count199
+) (c:/texlive/2022/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+ (c:/texlive/2022/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks20
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)) (c:/texlive/2022/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2022/04/08 v2.17n AMS math features
+\@mathmargin=\skip50
+
+For additional information on amsmath, use the `?' option.
+(c:/texlive/2022/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2021/08/26 v2.01 AMS text
+ (c:/texlive/2022/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks21
+\ex@=\dimen152
+)) (c:/texlive/2022/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen153
+) (c:/texlive/2022/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2022/04/08 v2.04 operator names
+)
+\inf@bad=\count266
+LaTeX Info: Redefining \frac on input line 234.
+\uproot@=\count267
+\leftroot@=\count268
+LaTeX Info: Redefining \overline on input line 399.
+LaTeX Info: Redefining \colon on input line 410.
+\classnum@=\count269
+\DOTSCASE@=\count270
+LaTeX Info: Redefining \ldots on input line 496.
+LaTeX Info: Redefining \dots on input line 499.
+LaTeX Info: Redefining \cdots on input line 620.
+\Mathstrutbox@=\box51
+\strutbox@=\box52
+LaTeX Info: Redefining \big on input line 722.
+LaTeX Info: Redefining \Big on input line 723.
+LaTeX Info: Redefining \bigg on input line 724.
+LaTeX Info: Redefining \Bigg on input line 725.
+\big@size=\dimen154
+LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
+\macc@depth=\count271
+LaTeX Info: Redefining \bmod on input line 905.
+LaTeX Info: Redefining \pmod on input line 910.
+LaTeX Info: Redefining \smash on input line 940.
+LaTeX Info: Redefining \relbar on input line 970.
+LaTeX Info: Redefining \Relbar on input line 971.
+\c@MaxMatrixCols=\count272
+\dotsspace@=\muskip16
+\c@parentequation=\count273
+\dspbrk@lvl=\count274
+\tag@help=\toks22
+\row@=\count275
+\column@=\count276
+\maxfields@=\count277
+\andhelp@=\toks23
+\eqnshift@=\dimen155
+\alignsep@=\dimen156
+\tagshift@=\dimen157
+\tagwidth@=\dimen158
+\totwidth@=\dimen159
+\lineht@=\dimen160
+\@envbody=\toks24
+\multlinegap=\skip51
+\multlinetaggap=\skip52
+\mathdisplay@stack=\toks25
+LaTeX Info: Redefining \[ on input line 2953.
+LaTeX Info: Redefining \] on input line 2954.
+) (c:/texlive/2022/texmf-dist/tex/latex/amscls/amsthm.sty
+Package: amsthm 2020/05/29 v2.20.6
+\thm@style=\toks26
+\thm@bodyfont=\toks27
+\thm@headfont=\toks28
+\thm@notefont=\toks29
+\thm@headpunct=\toks30
+\thm@preskip=\skip53
+\thm@postskip=\skip54
+\thm@headsep=\skip55
+\dth@everypar=\toks31
+) (c:/texlive/2022/texmf-dist/tex/latex/gensymb/gensymb.sty
+Package: gensymb 2022/10/17 v1.0.2 (KJH)
+) (c:/texlive/2022/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+Package: fancyhdr 2022/11/09 v4.1 Extensive control of page headers and footers
+\f@nch@headwidth=\skip56
+\f@nch@O@elh=\skip57
+\f@nch@O@erh=\skip58
+\f@nch@O@olh=\skip59
+\f@nch@O@orh=\skip60
+\f@nch@O@elf=\skip61
+\f@nch@O@erf=\skip62
+\f@nch@O@olf=\skip63
+\f@nch@O@orf=\skip64
+) (c:/texlive/2022/texmf-dist/tex/latex/wrapfig/wrapfig.sty
+\wrapoverhang=\dimen161
+\WF@size=\dimen162
+\c@WF@wrappedlines=\count278
+\WF@box=\box53
+\WF@everypar=\toks32
+Package: wrapfig 2003/01/31  v 3.6
+)
+\c@theorem=\count279
+\c@mydef=\count280
+ (c:/texlive/2022/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2023-01-16 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count281
+\l__pdf_internal_box=\box54
+) (build/tema4.aux
+LaTeX Info: Redefining \. on input line 8.
+LaTeX Info: Redefining \% on input line 8.
+)
+\openout1 = `tema4.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+ (c:/texlive/2022/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count282
+\scratchdimen=\dimen163
+\scratchbox=\box55
+\nofMPsegments=\count283
+\nofMParguments=\count284
+\everyMPshowfont=\toks33
+\MPscratchCnt=\count285
+\MPscratchDim=\dimen164
+\MPnumerator=\count286
+\makeMPintoPDFobject=\count287
+\everyMPtoPDFconversion=\toks34
+) (c:/texlive/2022/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
+ (c:/texlive/2022/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+))
+LaTeX Info: Redefining \. on input line 21.
+LaTeX Info: Redefining \% on input line 21.
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: wrapfig package is loaded.
+Package caption Info: End \AtBeginDocument code.
+LaTeX Info: Redefining \celsius on input line 21.
+Package gensymb Info: Faking symbols for \degree and \celsius on input line 21.
+
+
+Package gensymb Warning: Not defining \perthousand.
+
+LaTeX Info: Redefining \ohm on input line 21.
+Package gensymb Info: Using \Omega for \ohm on input line 21.
+
+Package gensymb Warning: Not defining \micro.
+
+LaTeX Font Info:    Trying to load font information for U+msa on input line 23.
+(c:/texlive/2022/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 23.
+ (c:/texlive/2022/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [1
+
+{c:/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (build/tema4.toc
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+)
+\tf@toc=\write3
+\openout3 = `tema4.toc'.
+
+ [1]
+Overfull \hbox (20.78879pt too wide) in paragraph at lines 36--37
+\OT1/cmr/m/n/12 mo-vi-mien-to que si-guen part^^S^^Pcu-las car-ga-das cuan-do en-tran en un cam-po magn^^Seti-co
+ []
+
+<Images T4/helice.png, id=12, 358.4592pt x 349.7868pt>
+File: Images T4/helice.png Graphic file (type png)
+<use Images T4/helice.png>
+Package pdftex.def Info: Images T4/helice.png  used on input line 40.
+(pdftex.def)             Requested size: 214.50119pt x 209.31328pt.
+
+Overfull \hbox (1.20697pt too wide) in paragraph at lines 44--45
+\OT1/cmr/m/n/12 cal-cu-lan-do su lon-gi-tud de ar-co, que se cal-cu-la-ba me-dian-te la si-guien-te in-te-gral: 
+ []
+
+[2 <./Images T4/helice.png>]
+<Images T4/intLinea1.png, id=26, 296.307pt x 287.6346pt>
+File: Images T4/intLinea1.png Graphic file (type png)
+<use Images T4/intLinea1.png>
+Package pdftex.def Info: Images T4/intLinea1.png  used on input line 70.
+(pdftex.def)             Requested size: 214.50119pt x 208.22908pt.
+ [3 <./Images T4/intLinea1.png>]
+<Images T4/elipse.png, id=31, 509.5035pt x 380.1402pt>
+File: Images T4/elipse.png Graphic file (type png)
+<use Images T4/elipse.png>
+Package pdftex.def Info: Images T4/elipse.png  used on input line 106.
+(pdftex.def)             Requested size: 253.49762pt x 189.12994pt.
+ [4 <./Images T4/elipse.png>]
+Overfull \hbox (23.66878pt too wide) in paragraph at lines 141--142
+\OT1/cmr/m/n/12 de una fun-ci^^Son vec-to-rial con la in-te-gral de ^^Sarea den-tro de una re-gi^^Son. Con-si-de-re-mos
+ []
+
+
+Overfull \hbox (4.12057pt too wide) in paragraph at lines 147--148
+[]\OT1/cmr/m/n/12 donde $\OML/cmm/m/it/12 y[]$ \OT1/cmr/m/n/12 e $\OML/cmm/m/it/12 y[]$ \OT1/cmr/m/n/12 son las fun-cio-nes que li-mi-tan la re-gi^^Son. Po-de-mos pa-ra-me-tri-zar
+ []
+
+<Images T4/regionElipse.png, id=36, 515.2851pt x 380.1402pt>
+File: Images T4/regionElipse.png Graphic file (type png)
+<use Images T4/regionElipse.png>
+Package pdftex.def Info: Images T4/regionElipse.png  used on input line 163.
+(pdftex.def)             Requested size: 253.49762pt x 187.01277pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[5] [6 <./Images T4/regionElipse.png>]
+<Images T4/thGreen.png, id=46, 395.3169pt x 380.1402pt>
+File: Images T4/thGreen.png Graphic file (type png)
+<use Images T4/thGreen.png>
+Package pdftex.def Info: Images T4/thGreen.png  used on input line 246.
+(pdftex.def)             Requested size: 253.49762pt x 243.76453pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[7] [8 <./Images T4/thGreen.png>]
+Overfull \hbox (27.69476pt too wide) in paragraph at lines 270--270
+[]\OT1/cmr/bx/n/17.28 Gradiente, di-ver-gen-cia y ro-ta-cio-nal. Ope-ra-dor
+ []
+
+
+Overfull \hbox (3.75703pt too wide) in paragraph at lines 278--279
+[]\OT1/cmr/m/n/12 Si apli-ca-mos el ope-ra-dor na-bla so-bre un cam-po es-ca-lar $\OML/cmm/m/it/12 f\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x; y; z\OT1/cmr/m/n/12 )$ ob-te-ne-mos
+ []
+
+
+Overfull \hbox (7.2313pt too wide) in paragraph at lines 309--310
+\OT1/cmr/bx/n/12 Teorema 2. \OT1/cmr/m/it/12 Sea $\OML/cmm/m/it/12 f\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x; y; z\OT1/cmr/m/n/12 )$ \OT1/cmr/m/it/12 un cam-po es-ca-lar con de-ri-va-das se-gun-das con-ti-nuas,
+ []
+
+[9]
+<Images T4/rotnulo.png, id=58, 481.3182pt x 383.7537pt>
+File: Images T4/rotnulo.png Graphic file (type png)
+<use Images T4/rotnulo.png>
+Package pdftex.def Info: Images T4/rotnulo.png  used on input line 329.
+(pdftex.def)             Requested size: 253.49762pt x 202.11195pt.
+
+Overfull \hbox (19.03592pt too wide) detected at line 340
+[][][]
+ []
+
+[10 <./Images T4/rotnulo.png>]
+Overfull \hbox (3.03325pt too wide) in paragraph at lines 380--381
+\OT1/cmr/bx/n/12 Teorema 4. \OT1/cmr/m/it/12 Un cam-po vec-to-rial $\OML/cmm/m/it/12 F\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x; y\OT1/cmr/m/n/12 ) = (\OML/cmm/m/it/12 F[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x; y\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; F[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x; y\OT1/cmr/m/n/12 ))$ \OT1/cmr/m/it/12 es con-ser-va-ti-vo
+ []
+
+[11]
+Overfull \hbox (28.26225pt too wide) in paragraph at lines 412--413
+[]\OT1/cmr/m/n/12 Para de-mos-trar-lo par-ti-re-mos de la de-fi-ni-ci^^Son de cam-po con-ser-va-ti-vo, su-po-ne-mos
+ []
+
+
+Overfull \hbox (5.71666pt too wide) in paragraph at lines 412--413
+\OT1/cmr/m/n/12 va-lor de $\OML/cmm/m/it/12 f\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x; y; z\OT1/cmr/m/n/12 )$ es in-de-pen-dien-te de la cur-va es-co-gi-da, por lo que es-co-ge-re-mos
+ []
+
+<Images T4/camposCgradiente.png, id=66, 276.03125pt x 206.27063pt>
+File: Images T4/camposCgradiente.png Graphic file (type png)
+<use Images T4/camposCgradiente.png>
+Package pdftex.def Info: Images T4/camposCgradiente.png  used on input line 416.
+(pdftex.def)             Requested size: 253.49762pt x 189.44078pt.
+[12 <./Images T4/camposCgradiente.png>]
+Overfull \hbox (36.06241pt too wide) in paragraph at lines 428--429
+[]\OT1/cmr/m/n/12 Donde $\OML/cmm/m/it/12 F \OT1/cmr/m/n/12 = (\OML/cmm/m/it/12 F[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x; y; z\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; F[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x; y; z\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; F[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x; y; z\OT1/cmr/m/n/12 ))$. A par-tir del teo-re-ma fun-da-men-tal
+ []
+
+[13] [14]
+Overfull \hbox (3.32092pt too wide) in paragraph at lines 526--527
+[]\OT1/cmr/m/n/12 Para pa-ra-me-tri-zar cual-quier su-per-fi-cie (Un plano por ejem-plo) ne-ce-si-ta-mos
+ []
+
+
+Overfull \hbox (11.15834pt too wide) in paragraph at lines 544--545
+[]\OT1/cmr/m/n/12 En la si-guien-te fi-gu-ra po-de-mos ver una re-pre-sen-ta-ci^^Son de la pa-ra-me-tri-za-ci^^Son: 
+ []
+
+[15]
+<Images T4/esferaparametrizada.png, id=86, 362.7954pt x 349.7868pt>
+File: Images T4/esferaparametrizada.png Graphic file (type png)
+<use Images T4/esferaparametrizada.png>
+Package pdftex.def Info: Images T4/esferaparametrizada.png  used on input line 550.
+(pdftex.def)             Requested size: 175.49881pt x 169.20872pt.
+<Images T4/lineasmaestrasesfera.png, id=87, 362.7954pt x 348.3414pt>
+File: Images T4/lineasmaestrasesfera.png Graphic file (type png)
+<use Images T4/lineasmaestrasesfera.png>
+Package pdftex.def Info: Images T4/lineasmaestrasesfera.png  used on input line 560.
+(pdftex.def)             Requested size: 175.49881pt x 168.50952pt.
+ [16 <./Images T4/esferaparametrizada.png> <./Images T4/lineasmaestrasesfera.png>]
+<Images T4/vecNormal.png, id=94, 356.33125pt x 343.2825pt>
+File: Images T4/vecNormal.png Graphic file (type png)
+<use Images T4/vecNormal.png>
+Package pdftex.def Info: Images T4/vecNormal.png  used on input line 578.
+(pdftex.def)             Requested size: 214.50119pt x 206.64679pt.
+ [17 <./Images T4/vecNormal.png>]
+Overfull \hbox (20.78879pt too wide) in paragraph at lines 639--640
+[]\OT1/cmr/m/n/12 Si la su-per-fi-cie a pa-ra-me-tri-zar es la gr^^Safi-ca de una su-per-fi-cie la pa-ra-me-tri-za-ci^^Son
+ []
+
+[18]
+<Images T4/integralsuperficie1.png, id=103, 354.8457pt x 349.7868pt>
+File: Images T4/integralsuperficie1.png Graphic file (type png)
+<use Images T4/integralsuperficie1.png>
+Package pdftex.def Info: Images T4/integralsuperficie1.png  used on input line 687.
+(pdftex.def)             Requested size: 253.49762pt x 249.88217pt.
+ [19 <./Images T4/integralsuperficie1.png>]
+<Images T4/flujogauss.png, id=108, 301.125pt x 339.2675pt>
+File: Images T4/flujogauss.png Graphic file (type png)
+<use Images T4/flujogauss.png>
+Package pdftex.def Info: Images T4/flujogauss.png  used on input line 736.
+(pdftex.def)             Requested size: 155.99762pt x 175.76265pt.
+
+Overfull \hbox (10.89241pt too wide) in paragraph at lines 743--744
+[]\OT1/cmr/m/n/12 Un ejem-plo de in-te-gral de su-per-fi-cie
+ []
+
+
+Underfull \hbox (badness 5064) in paragraph at lines 743--744
+\OML/cmm/m/it/12 F\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x; y; z\OT1/cmr/m/n/12 ) = (\OML/cmm/m/it/12 x; y; z\OT1/cmr/m/n/12 )$ so-bre la
+ []
+
+
+Underfull \hbox (badness 2538) in paragraph at lines 743--744
+\OT1/cmr/m/n/12 es-fe-ra de ra-dio uni-dad cen-tra-da
+ []
+
+[20 <./Images T4/flujogauss.png>]
+Overfull \hbox (2.2466pt too wide) in paragraph at lines 747--748
+[]\OT1/cmr/m/n/12 El vec-tor nor-mal, cal-cu-la-do an-tes,
+ []
+
+
+Overfull \hbox (13.61765pt too wide) detected at line 751
+[]\OT1/cmr/bx/n/12 n \OT1/cmr/m/n/12 = []
+ []
+
+
+Underfull \hbox (badness 1194) in paragraph at lines 753--754
+[]\OT1/cmr/m/n/12 Si eva-lua-mos el cam-po en la
+ []
+
+<Images T4/stokes1.png, id=113, 359.9046pt x 349.7868pt>
+File: Images T4/stokes1.png Graphic file (type png)
+<use Images T4/stokes1.png>
+Package pdftex.def Info: Images T4/stokes1.png  used on input line 792.
+(pdftex.def)             Requested size: 137.28389pt x 133.4274pt.
+
+Overfull \hbox (12.48103pt too wide) in paragraph at lines 792--793
+ [][] 
+ []
+
+<Images T4/stokes2.png, id=114, 295.5843pt x 287.6346pt>
+File: Images T4/stokes2.png Graphic file (type png)
+<use Images T4/stokes2.png>
+Package pdftex.def Info: Images T4/stokes2.png  used on input line 797.
+(pdftex.def)             Requested size: 137.28389pt x 133.5907pt.
+
+Overfull \hbox (12.48103pt too wide) in paragraph at lines 797--798
+ [][] 
+ []
+
+<Images T4/stokes3.png, id=115, 294.8616pt x 287.6346pt>
+File: Images T4/stokes3.png Graphic file (type png)
+<use Images T4/stokes3.png>
+Package pdftex.def Info: Images T4/stokes3.png  used on input line 802.
+(pdftex.def)             Requested size: 137.28389pt x 133.91547pt.
+
+Overfull \hbox (12.48103pt too wide) in paragraph at lines 802--803
+ [][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[21] [22 <./Images T4/stokes1.png> <./Images T4/stokes2.png> <./Images T4/stokes3.png>] [23]
+Overfull \hbox (0.30417pt too wide) in paragraph at lines 899--901
+\OT1/cmr/bx/n/12 Teorema 8. \OT1/cmr/m/it/12 Th.de Gauss Sea $\OML/cmm/m/it/12 V$ \OT1/cmr/m/it/12 un vo-lu-men re-gu-lar li-mi-ta-do por la su-per-fi-cie
+ []
+
+<Images T4/thgauss1.png, id=128, 299.9205pt x 287.6346pt>
+File: Images T4/thgauss1.png Graphic file (type png)
+<use Images T4/thgauss1.png>
+Package pdftex.def Info: Images T4/thgauss1.png  used on input line 911.
+(pdftex.def)             Requested size: 253.49762pt x 243.1212pt.
+[24 <./Images T4/thgauss1.png>] [25] (build/tema4.aux
+LaTeX Info: Redefining \. on input line 8.
+LaTeX Info: Redefining \% on input line 8.
+) ) 
+Here is how much of TeX's memory you used:
+ 6020 strings out of 476024
+ 99569 string characters out of 5794016
+ 1864382 words of memory out of 5000000
+ 26392 multiletter control sequences out of 15000+600000
+ 525446 words of font info for 82 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 57i,12n,63p,623b,533s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on build/tema4.pdf (26 pages, 1349165 bytes).
+PDF statistics:
+ 217 PDF objects out of 1000 (max. 8388607)
+ 117 compressed objects within 2 object streams
+ 0 named destinations out of 1000 (max. 500000)
+ 81 words of extra memory for PDF output out of 10000 (max. 10000000)
+

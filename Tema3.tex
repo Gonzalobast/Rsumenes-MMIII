@@ -1,0 +1,493 @@
+\documentclass[a4paper,12pt,titlepage]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[spanish,es-tabla]{babel}
+\usepackage[none]{hyphenat}
+\usepackage[justification=centering]{caption}
+\usepackage{subcaption}
+\usepackage{amssymb, amsmath}
+\usepackage{gensymb}
+\usepackage{fancyhdr}
+\usepackage{wrapfig} % Se usa para integrar las figuras en el texto
+
+
+\title{Tema 3: Cálculo integral de funciones de varias variables}
+\author{Gonzalo Bastos González}
+\date{Métodos matemáticos III}
+
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\newpage
+
+\section{Introducción}
+
+Para calcular el área bajo una curva de una $f(x):\mathbb{R}\rightarrow\mathbb{R}$ y el eje $y=0$ habíamos introducido la integral en una dimensión, definida a partir de la suma de Riemann. Dada la partición de un intervalo y una función acotada yacontinua en ese intervalo definíamos la suma de Riemann como:
+
+\begin{equation}
+    \mathcal{S}(f, \mathcal{P})=\sum_{i=1, n} f\left(x_i^{\prime}\right)\left(x_i-x_{i-1}\right)
+\end{equation}
+
+donde $x_i^{\prime}$ es un valor aleatorio entre los valores $[x_i,x_{i-1}]$.
+Otras formas de definir la suma de Riemann es definir la suma superior o inferior:
+
+\begin{equation}
+    \begin{gathered}
+        \text{Suma superior}\Rightarrow \mathcal{U}(f, \mathcal{P})=\sum_{i=1, n} f\left(x_i^{\prime}\right)\left(x_i-x_{i-1}\right) \\
+        \text{Suma inferior}\Rightarrow \mathcal{L}(f, \mathcal{P})=\sum_{i=1, n} f\left(x_i^{\prime}\right)\left(x_i-x_{i-1}\right)
+    \end{gathered}
+\end{equation}
+
+Donde en el caso de la suma superior $x_i^{\prime}$ es el valor donde la función $f(x)$ es máxima entre los valores $[x_i,x_{i-1}]$. En el caso de la suma inferior $x_i^{\prime}$ es el valor donde la función $f(x)$ es mínima entre los valores $[x_i,x_{i-1}]$.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Images integrales/sumaRiemann.jpg}
+    \caption{Representación gráfica de la suma superior e inferior de Riemann}
+\end{figure}
+
+Decimos que la función es integrable en $[a,b]$ si para particiones cada vez más pequeñas las tres sumas de Riemann convergen a un mismo valor, la integral:
+
+\begin{equation}
+    \int_a^b f(x) dx
+\end{equation}
+
+Además de eso, siempre se cumple que:
+
+\begin{equation}
+    \mathcal{L}(f, \mathcal{P}) \leq \mathcal{S}(f, \mathcal{P}) \leq \mathcal{U}(f, \mathcal{P})
+\end{equation}
+
+\section{Integrales 2D}
+
+Sabemos que el área bajo la curva de una función real, $f(x)$, se corresponde con su integral entre $a$ y $b$. Extendiendo este concepto a funciones escalares $f(x,y)$ el volumen bajo la gráfica definida en una región $[a,b]\times [c,d]$ y el plano $(x,y)$, corresponderá con el de la integral definida en dos dimensiones:
+
+\begin{equation}
+    \mathcal{V} = \int_a^b \int_c^d f(x,y) dxdy
+\end{equation}
+
+Un ejemplo de esta extensión del concepto de integral:
+
+\par Sea la función escalar $f(x,y)=2-x^2-y^2$ y la región $\mathcal{R}=[-1,1]\times [-1,1]$, el volumen bajo entre la curva (Expresado como sumas de Riemann) y el plano $(x,y)$ gráficamente es:
+
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}{0.4\textwidth}
+        \centering
+        \includegraphics[width=1.15\linewidth]{Images integrales/funcion1.png}
+    \end{subfigure}
+    \begin{subfigure}{0.4\textwidth}
+        \centering
+        \includegraphics[width=1.05\linewidth]{Images integrales/funcion1Volumen.png}
+    \end{subfigure}
+    \caption{Función a integrar y volumen bajo la curva}
+\end{figure}
+
+El concepto de suma de Riemann es fácilmente extensible a estas integrales en dos dimensiones, definiendo particiones en los dos intervalos, $[a,b]$ y $[c,d]$:
+
+\begin{equation}
+    \mathcal{S}(f, \mathcal{P})=\sum_{i=1}^n \sum_{j=1}^m f\left(x_i^{\prime}, y_j^{\prime}\right) \Delta x_i \Delta y_j
+\end{equation}
+
+donde $\left(x_i^{\prime}, y_j^{\prime}\right)$ es un valor aleatorio entre los valores $[x_{i-1},x_i]$ e $[y_{j-1},y_j]$ y $\Delta x_i = x_i - x_{i-1}$ y $\Delta y_j = y_j - y_{j-1}$.
+
+\par En funciones escalares de dos dimensiones el concepto de partición tiene un carácter de área, en vez de ser solo un intervalo. Estas particiones en dos dimensiones de un rectángulo R se definen como el producto cartesiano de dos particiones, $P_x = {x_1,...,x_n}$ que parte $[a,b]$ y $P_y={y_1,...,y_m}$ que parte $[c,d]$. El producto cartesiano parte el rectángulo original en rectángulos de menor tamaño. En caso de que el tamaño de las dos subparticiones sea el mismo la partición se denomina regular. En la siguiente figura podemos ver un ejemplo de partición regular:
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Images integrales/particionesRegulares.png}
+    \caption{Ejemplo de partición regular de un rectángulo R}
+\end{figure}
+
+
+\par De forma análoga podemos definir las sumas superiores e inferiores. A partir de esta extensión del concepto de sumas de Riemann podemos definir que si estas realizamos particiones más finas y estas convergen a un mismo valor, este valor se corresponde con el valor de integral en esa región:
+
+\begin{equation}
+    \int_a^b \int_c^d f(x,y) dxdy
+\end{equation}
+
+Si comparamos las definiciones de integral y suma de Riemann podemos ver que la notación de integral es una forma de extender la suma de Riemann, algo discreto, a un intervalo continuo:
+
+\begin{equation}
+    \sum \rightarrow \int, \quad \Delta x_i=x_i-x_{i-1} \rightarrow \mathrm{d} x, \quad \Delta y_j=y_j-y_{j-1} \rightarrow \mathrm{d} y
+    \end{equation}
+
+\newpage
+
+\subsection{Teorema de Fubini}
+
+Sea $f(x,y)$ una función integrable en la región $[a,b]\times [c,d]$, entonces podemos integrar en el orden que consideremos:
+
+\begin{equation}
+    \int_a^b \int_c^d f(x, y) \mathrm{d} x \mathrm{~d} y=\int_a^b\left[\int_c^d f(x, y) \mathrm{d} y\right] \mathrm{d} x=\int_c^d\left[\int_a^b f(x, y) \mathrm{d} x\right] \mathrm{d} y
+    \end{equation}
+
+El teorema nos afirma que siempre que la función sea continua en la región a integrar podemos conmutar las integrales. En el caso de que la función no sea continua en la región a integrar debemos distinguir los siguientes casos:
+
+\begin{itemize}
+    \item Si $\int_a^b f(x,y)dx \;\exists \;\forall y\in [c,d] \Rightarrow \int_c^d[\int_a^b f(x,y)dx]dy\; \exists$ y coincide con el valor de la integral doble $\iint_R f(x,y)dxdy$.
+    \item Si $\int_c^d f(x,y)dy \;\exists \;\forall x\in [a,b] \Rightarrow \int_a^b[\int_c^d f(x,y)dy]dx\; \exists$ y coincide con el valor de la integral doble $\iint_R f(x,y)dxdy$.
+    \item Si se cumplen las dos condiciones anteriores la integral doble se puede calcular en el orden que queramos, la integral conmuta.
+\end{itemize}
+
+Las condiciones para esto son que la función $f(x,y)$ esté acotada en la región a integrar y que las discontinuidades sean de área 0, discontinuidades puntuales.
+
+
+\subsection{Integrales dobles en regiones elementales}
+
+Hasta ahora estábamos considerando que las regiones en las que integrábamos eran rectangulares pero podemos extender el concepto de integral a regiones elementales no rectangulares. Un ejemplo de región no rectangular podría ser un tríangulo como el siguiente:
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.65\linewidth]{Images integrales/regnotriangular.png}
+    \caption{Región no rectangular elemental}
+\end{figure}
+
+\newpage
+
+Esta región se puede definir como los puntos que cumplen que:
+
+\begin{equation}
+    \{0\leq x \leq 1;0\leq y \leq x\}
+\end{equation}
+
+En esta región las dos variables ya no son independientes, presentan una relación de dependencia, el intervalo donde integramos $y$ depende del intervalo donde integramos $x$. Podemos traducir esta dependencia expresando el límite de interación de $y$ como una función de $x$, en este caso para una función arbitraria $f(x,y)$ la integral tendría la siguiente expresión:
+
+\begin{equation}
+    \iint_R f(x, y) \mathrm{d} x \mathrm{~d} y=\int_0^1\left[\int_0^x f(x, y) \mathrm{d} y\right] \mathrm{d} x
+    \end{equation}
+
+Esta relación entre las variables también se puede expresar tomando la variable $y$ como la independiente, la región tendría la siguiente expresión:
+
+\begin{equation}
+    \{0\leq y \leq 1 ; y \leq x \leq 1\}
+\end{equation}
+
+Por tanto, la integral tendría la siguiente expresión:
+
+\begin{equation}
+    \iint_R f(x, y) \mathrm{d} x \mathrm{~d} y=\int_0^1\left[\int_y^1 f(x, y) \mathrm{d} x\right] \mathrm{d} y
+\end{equation}
+
+
+En general, si queremos conocer la integral de una función en una región R primero debemos definirla:
+
+\begin{itemize}
+    \item Tipo I, $y$ presenta una dependencia en $x$:
+    \begin{equation}
+        \{a\leq x \leq b,\phi_0(x)\leq y \leq \phi_1(x)\}
+    \end{equation}
+    Donde $\phi_0(x)$ y $\phi_1(x)$ son funciones reales que dan los extremos en los que integramos $y$ para un valor de $x$. La integral de una función $f(x,y)$ en una región de tipo I tendría la siguiente forma:
+    \begin{equation}
+        \iint_R f(x,y) dxdy = \int_a^b \left [\int_{\phi_0(x)}^{\phi_1(x)}f(x,y)dy \right ]dx
+    \end{equation}
+    \item Tipo II, $x$ presenta una dependencia en $y$:
+    \begin{equation}
+        \{c\leq y \leq d, \xi_0(y) \leq x \leq \xi_1(y)\}
+    \end{equation}
+    Donde $\xi_0(y)$ y $\xi_1(y)$ son dos funciones reales que dan los extremos donde integramos $x$ para un determinado valor de $y$. La integral de una función $f(x,y)$ en una región de tipo II tendría la siguiente expresión:
+    \begin{equation}
+        \iint_R f(x,y) dxdy = \int_c^d \left [\int_{\xi_0(y)}^{\xi_1(y)}f(x,y)dx \right ]dy
+    \end{equation}
+\end{itemize}
+
+
+Podemos definir otro tipo de región, de tipo III, en el podemos expresar la región a integrar como una región de tipo I o de tipo II indistintamente. Cuando nos encontramos con una región de este tipo podemos conmutar la integral e expresar la región con la dependencia que más nos interese. En el caso del triángulo nos encontramos con una región de tipo III, ya podemos expresarla con una dependencia en $y$ o en $x$.
+
+\par Otro ejemplo de región a integrar de tipo III es el cuarto de disco de radio $a$ en el primer cuadrante:
+
+\newpage
+
+Podemos expresarla como una región de tipo I:
+
+\begin{equation}
+    \{0\leq x \leq a\;;\; 0 \leq y \leq \sqrt{a^2-x^2}\}
+\end{equation}
+
+O como una región de tipo II:
+
+\begin{equation}
+    \{0\leq y \leq a\;;\; 0 \leq x \leq \sqrt{a^2-y^2}\}
+\end{equation}
+
+Si queremos calcular la integral de la función $f(x,y)=\sqrt{a^2-y^2}$ nos conviene expresarla como una región de tipo II. En la siguiente figura podemos ver una representación gráfica de la región y del volumen a integrar:
+
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}{0.4\textwidth}
+        \centering
+        \includegraphics[width=1\linewidth]{Images integrales/regDisco.png}
+    \end{subfigure}
+    \begin{subfigure}{0.4\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{Images integrales/regDisco2.png}
+    \end{subfigure}
+    \caption{Región a integrar y volumen de la integral, para $f(x,y)=\sqrt{a^2-y^2}$ con $a=2$}
+\end{figure}
+
+La integral tiene el siguiente valor:
+
+\begin{equation}
+    \begin{gathered}
+    \iint_R \sqrt{a^2-y^2} \mathrm{~d} x \mathrm{~d} y=\int_0^a\left[\int_0^{\sqrt{a^2-y^2}} \sqrt{a^2-y^2} \mathrm{~d} x\right] \mathrm{d} y \\
+    \left.\int_0^a \sqrt{a^2-y^2} x\right|_0 ^{\sqrt{a^2-y^2}} \mathrm{~d} y=\int_0^a\left(a^2-y^2\right) \mathrm{d} y=a^2 y-\left.\frac{y^3}{3}\right|_0 ^a=\frac{2 a^3}{3}
+    \end{gathered}
+    \end{equation}
+
+\subsection{Cambios de variable y jacobiano}
+
+En ocasiones es más conveniente realizar la integral en coordenadas polares, cuando contamos con regiones que se pueden describir más fácilmente en polares. La integral anterior es un buen ejemplo, la región se puede entender como un cuarto de círculo de radio $a$.
+
+\subsubsection{Particiones y jacobiano}
+
+Cuando cambiamos de coordenadas las particiones que empleamos para definir la integral también se ven modificadas. En la siguiente figura podemos ver como la región de una sección del anillo de radio $[0,5;1]$ y ángulo $[0,\pi/2]$ es una región rectangular si cambiamos a coordenadas polares $(r,\phi)$:
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Images integrales/vecPolares.png}
+    \caption{Vectores aplicando el cambio de coordenadas}
+\end{figure}
+
+Como podemos ver, particiones rectangulares en polares se convierten en polígonos en cartesianas. Para calcular la integral necesitamos calcular el volumen de los prismas que tienen como base esos polígonos. Estas particiones al hacerse cada vez más pequeñas se convierten en paralelogramos y su área viene dada por los vectores que definen sus lados.
+
+\par El área de cada partición en cartesianas viene dada por el producto vectorial de sus lados. Si consideramos un cambio de variable $(u,v)\rightarrow(x,y)$, para transformar la región en principio no elemental en una región elemental el área de los rectángulos viene dada por la siguiente expresión:
+
+\begin{equation}
+    \Delta x \Delta y =\begin{vmatrix}
+    \frac{\partial x}{\partial u} & \frac{\partial x}{\partial v} \\
+    \frac{\partial y}{\partial u} & \frac{\partial y}{\partial v}
+    \end{vmatrix} \Delta u \Delta v
+    \end{equation}
+
+Donde $J$ es el determinante de la jacobiana asociada al cambio de variable:
+
+\begin{equation}
+    J = \begin{vmatrix}
+        \frac{\partial x}{\partial u} & \frac{\partial x}{\partial v} \\
+        \frac{\partial y}{\partial u} & \frac{\partial y}{\partial v} \end{vmatrix}
+\end{equation}
+
+Como el diferencial de área siempre tiene que ser positivo tomaremos el valor absoluto del determinante jacobiano. Por tanto, cuando cambiamos de coordenadas:
+
+\begin{equation}
+    \int_R f(x,y) dxdy = \int_{R'} f(u,v) |J| dudv
+\end{equation}
+
+Donde $R'$ es la región definida en el espacio $(u,v)$, $f(u,v)=f(x(u,v),y(u,v))$ es la función definida en el nuevo espacio de coordenadas y el diferencial de área viene dado por la siguiente expresión:
+
+\begin{equation}
+    dA = dxdy = |J|dudv
+\end{equation}
+
+Si consideramos el cambio a coordenadas polares, el valor del jacobiano es:
+
+\begin{equation}
+    \left.\begin{array}{c}
+        x = r \cos \phi \\
+        y = r \sin \phi
+    \end{array}\right\} \Rightarrow |J|= \begin{vmatrix}
+        \cos \phi & -r\sin \phi \\
+        \sin \phi & r\cos \phi
+    \end{vmatrix} = r(\cos^2 \phi + \sin^2 \phi) = r
+\end{equation}
+    
+Por tanto, el diferencial de área en polares es:
+
+\begin{equation}
+    dA = rd\phi dr
+\end{equation}
+
+El sentido geométrico de este diferencial es que cuando obtenemos la región elemental rectangular para poder integrar el rectángulo sobre el que integramos tiene como lados $dr$ y $rd\phi$, como se puede ver en la siguiente figura:
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.85\linewidth]{Images integrales/dApolares.png}
+    \caption{Diferencial de área en polares}
+\end{figure}
+
+\newpage
+
+Un ejemplo de integral realizable en coordenadas polares es la función $f(x,y)=\log(x^2+y^2)$ en el la sección de anillo de radio $[a,b]$ y ángulo $[0,\pi/2]$. 
+
+\begin{equation}
+    \begin{gathered}
+        f(x,y) = \log(x^2+y^2) \Rightarrow f(r,\phi)=2\log r \\
+        \int_a^b\int_0^{\pi/2} (2\log r)r drd\phi
+    \end{gathered}
+\end{equation}
+
+La integral en $\phi$ vale $\pi/2$, ya que la función no tiene dependencia en el ángulo.
+
+\par La integral en $r$ se resuelve por partes:
+
+\begin{equation}
+    \int 2 r \log r \mathrm{~d} r=r^2 \log r-\int r \mathrm{~d} r=r^2 \log r-\frac{r^2}{2}
+    \end{equation}
+
+Por tanto, el valor de la integral completa es:
+
+\begin{equation}
+    \int_a^b \int_0^{\pi / 2} 2 r \log r \mathrm{~d} r \mathrm{~d} \phi=\frac{\pi}{2}\left(b^2 \log b-\frac{b^2}{2}-a^2 \log a+\frac{a^2}{2}\right)
+    \end{equation}
+
+En la siguiente figura podemos ver la región de integración en el XY (Para $a=1$ y $b=1.5$) y la gráfica de la función a integrar en esa región:
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.55\linewidth]{Images integrales/integralPolares.png}
+    \caption{Región a integrar y curva de la función}
+\end{figure}
+
+\section{Integrales 3D}
+
+Sea una función escalar $f(x,y,z)$ y un prisma dado por: $[a,b]\times [c,d]\times [e,f]$. La integral de la función en el prisma viene dada por la siguiente expresión:
+
+\begin{equation}
+    \int_V f(x, y, z) \mathrm{d} x \mathrm{~d} y \mathrm{~d} z=\int_a^b \int_c^d \int_e^f f(x, y, z) \mathrm{d} x \mathrm{~d} y \mathrm{~d} z
+    \end{equation}
+
+El teorema de Fubini nos asegura que podemos integrar en el orden que queramos si la función no presenta ningún problema.
+
+\subsection{Integrales en volúmenes no elementales}
+
+En los casos anteriores tomábamos como particiones rectángulos que se proyectaban en prismas. No obstante también podemos integrar sobre volúmenes más complejos. Un ejemplo de esto es el volumen limitado por la superficie $z=x^2+y^2$ hasta $z=2$, con $x\geq 0$ e $y\geq 0$. Podemos ver ese volumen en la siguiente figura:
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.55\linewidth]{Images integrales/volumen3d1.png}
+    \caption{Volumen a integrar}
+\end{figure}
+
+En la figura podemos ver la tapa superior, que nos permitirá determinar el rango de integración. En $x$ integramos de $[0,\sqrt{2}]$, una vez fijado el parámetro independiente vamos a determinar las dependencias con las otras variables. En $y$ integramos en el intervalo $[0,\sqrt{2-x^2}]$, como se muestra en la siguiente figura:
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.55\linewidth]{Images integrales/volumen3d2.png}
+    \caption{Integración en un segmento de $z$ que nos da el rango de integración}
+\end{figure}
+
+Por último, solo queda determinar la dependencia en z, que vendrá dada por la superficie $z=x^2+y^2$ en la parte inferior y el plano $z=2$ en la parte superior.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.55\linewidth]{Images integrales/volumen3d3.png}
+    \caption{Integración en un segmento de $z$ que nos da el rango de integración}
+\end{figure}
+
+Por tanto, la integral queda definida en un volumen:
+
+\begin{equation}
+    \{0\leq x \leq \sqrt{2},\; 0\leq y \leq \sqrt{2-x^2}, \;x^2+y^2 \leq z \leq 2 \}
+\end{equation}
+
+Por lo que la integral tiene la siguiente expresión:
+
+\begin{equation}
+    \int_0^{\sqrt{2}}\left[\int_0^{\sqrt{2-x^2}}\left[\int_{x^2+y^2}^2 f(x, y, z) \mathrm{d} z\right] \mathrm{d} y\right] \mathrm{d} x
+    \end{equation}
+
+Al igual que en dos dimensiones, en tres dimensiones podemos definir volúmenes de integración de 6 tipos diferentes, en función de las dependencias que presentan los límites de integración. Esto implica que muchas veces podremos realizar una misma integral de volumen con otras ligaduras. Cabe destacar que en las integrales en tres dimensiones cuando la función $f(x,y,z)=1$ la integral se corresponde con el volumen pero también podemos integrar funciones tales que $f(x,y,z)\neq1$. Una posible aplicación de esto es una función $f(x,y,z)$ que nos da el valor de la densidad de un cuerpo en función del diferencial de volumen.El valor de la densidad puede ser o no constante, si es constante podemos sacarlo fuera de la integral e integrar el diferencial de volumen, obteniendo la masa del cuerpo. En caso de que la densidad no sea constante la situación es más complicada, para calcular la masa del cuerpo tenemos que calcular el valor de la integral. Un ejemplo sería la función $f(x,y,z)=x$, que podemos integrar en el volumen anterior:
+
+$\begin{aligned} & \int_0^{\sqrt{2}}\left[\int_0^{\sqrt{2-x^2}}\left[\int_{x^2+y^2}^2 x \mathrm{~d} z\right] \mathrm{d} y\right] \mathrm{d} x=\int_0^{\sqrt{2}}\left[\left.\int_0^{\sqrt{2-x^2}} x z\right|_{x^2+y^2} ^2 \mathrm{~d} y\right] \mathrm{d} x \\ = & \int_0^{\sqrt{2}}\left[\int_0^{\sqrt{2-x^2}} x\left(2-x^2-y^2\right) \mathrm{d} y\right] \mathrm{d} x=\int_0^{\sqrt{2}} x\left(2-x^2\right) y-\left.x \frac{y^3}{3}\right|_0 ^{\sqrt{2-x^2}} \mathrm{~d} x \\ = & \int_0^{\sqrt{2}} \frac{2 x}{3}\left(2-x^2\right)^{3 / 2} \mathrm{~d} x=-\left.\frac{2}{15}\left(2-x^2\right)^{5 / 2}\right|_0 ^{\sqrt{2}}=\frac{8}{15} \sqrt{2}\end{aligned}$
+
+\subsection{Cambios de variable}
+
+En muchas ocasiones, para resolver la integral de una forma más cómoda, es muy útil realizar un cambio de variable sobre las variables a integrar. En tres dimensiones la dinámica de la integral con cambio de variable es la misma que en dos dimensiones. Si definimos unas nuevas variables $(u,v,w)$ arbitrarias, con $x(u,v,w),y(u,v,w),z(u,v,w)$ la nueva integral viene dada por:
+\begin{equation}
+\int_V f(x, y, z) \mathrm{d} x \mathrm{~d} y \mathrm{~d} z=\int_{V^{\prime}} f(u, v, w)|J| \mathrm{d} u \mathrm{~d} v \mathrm{~d} w
+\end{equation}
+
+Donde $|J|$ es el valor absoluto del determinante jacobiano, que obtenemos calculando el determinante de la matriz jacobiana del cambio de variable:
+
+\begin{equation}
+J=\left|\begin{array}{lll}\frac{\partial x}{\partial u} & \frac{\partial x}{\partial v} & \frac{\partial x}{\partial w} \\ \frac{\partial y}{\partial u} & \frac{\partial y}{\partial v} & \frac{\partial y}{\partial w} \\ \frac{\partial z}{\partial u} & \frac{\partial z}{\partial v} & \frac{\partial z}{\partial w}\end{array}\right|
+\end{equation}
+
+\subsubsection{Cambio a cilíndricas}
+
+\begin{equation}
+    \left.\begin{array}{c}
+        x = r \cos \phi \\
+        y = r \sin \phi \\
+        z = z
+    \end{array}\right\} \Rightarrow |J|= \begin{vmatrix}
+        \cos \phi & -r\sin \phi & 0\\
+        \sin \phi & r\cos \phi & 0\\
+        0 & 0 & 1
+    \end{vmatrix} = r(\cos^2 \phi + \sin^2 \phi) = r
+\end{equation}
+
+Por tanto, la expresión del diferencial de área en cilíndricas es:
+
+\begin{equation}
+    dxdydz = r drd\phi dz
+\end{equation}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.65\linewidth]{Images integrales/dAcilindricas.png}
+    \caption{Diferencial de volumen en cilíndricas}
+\end{figure}
+
+Como ejemplo, podemos calcular el valor de la integral $f(x,y,z)=x$ en el volumen anterior, que redefiniremos en coordenadas cilíndricas como:
+
+\begin{equation}
+    0 \leq z \leq 2, \; 0\leq \phi \leq \pi/2,\;0\leq r \leq \sqrt{z}
+\end{equation}
+
+Por tanto podemos escribir la integral, ahora de $f(r,\phi,z)=r \cos \phi$ como:
+
+\begin{equation}
+    \begin{gathered}
+    \int_0^2\left[\int_0^{\pi / 2}\left[\int_0^{\sqrt{z}} r \cos \phi r \mathrm{~d} r\right] \mathrm{d} \phi\right] \mathrm{d} z\\
+    \left.\left.\int_0^2 \sin \phi\right|_0 ^{\pi / 2} \frac{r^3}{3}\right|_0 ^{\sqrt{z}} \mathrm{~d} z=\int_0^2 \frac{z^{3 / 2}}{3} \mathrm{~d} z=\left.\frac{2}{15} z^{5 / 2}\right|_0 ^2=\frac{8}{15} \sqrt{2}
+    \end{gathered}
+    \end{equation}
+
+\subsubsection{Cambio a esféricas}
+
+\begin{equation}
+    \begin{gathered}
+    \left.\begin{array}{c}
+        x = r \cos \phi \sin \theta \\
+        y = r \sin \phi \sin \theta\\
+        z = r \cos \theta
+    \end{array}\right\} \Rightarrow |J|= \begin{vmatrix}
+        \cos \phi \sin \theta & -r\sin \phi \sin\theta & r \cos \phi \cos \theta\\
+        \sin \phi \sin \theta & r\cos \phi \sin \theta & r \sin \phi \cos \theta\\
+        \cos \theta & 0 & -r\sin \theta
+    \end{vmatrix} \\
+    |J| = r^2 \sin \theta
+\end{gathered}
+\end{equation}
+
+Por tanto la expresión del diferencial de área es:
+
+\begin{equation}
+    dxdydz = r^2 \sin \theta dr d\phi d\theta
+\end{equation}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.65\linewidth]{Images integrales/dAesfericas.png}
+    \caption{Diferencial de volumen en esféricas}
+\end{figure}
+
+Debemos destacar que el vector $dr$ de esféricas no es el mismo que el de cilíndricas. El vector $dr$ de esféricas es un vector radial, que se corresponde con $\hat{r}$ y apunta en la dirección de expansión de la esfera de la que partimos para establecer las coordenadas. Por otro lado, el vector $dr$ empleado en cilíndricas es un vector que apunta hacia la proyección de nuestro punto sobre el plano XY, en el sentido de crecimiento del cilindro a partir del que definimos el sistema de coordenadas. Es habitual encontrarnos con otra notación para referirnos al vector radial de las coordenadas cilíndricas, como $d\rho$, que deriva del vector $\hat{\rho}$.
+
+\par Un posible ejercicio de ejemplo podría ser calcular la integral de la función $f(x,y,z)=e^{(x^2+y^2+z^2)^{3/2}}$ en la esfera de radio unidad, este volumen se define en esféricas como:
+
+\begin{equation}
+    \{0 \leq r \leq 1, \; 0 \leq \phi \leq 2\pi, \;0 \leq \theta \leq \pi\} 
+\end{equation}
+
+La integral queda como:
+
+\begin{equation}
+    \int_0^1 \int_0^{2 \pi} \int_0^\pi e^{r^3} r^2 \sin \theta \mathrm{d} r \mathrm{~d} \theta \mathrm{d} \phi=\left.\left.\left.\phi\right|_0 ^{2 \pi}(-\cos \theta)\right|_0 ^\pi \frac{1}{3} e^{r^3}\right|_0 ^1=\frac{4 \pi}{3}(e-1)
+    \end{equation}
+
+\end{document}

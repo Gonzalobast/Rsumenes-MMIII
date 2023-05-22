@@ -1,0 +1,377 @@
+\documentclass[a4paper,12pt,titlepage]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[spanish,es-tabla]{babel}
+\usepackage[none]{hyphenat}
+\usepackage[justification=centering]{caption}
+\usepackage{subcaption}
+\usepackage{amssymb, amsmath,,amsthm}
+\usepackage{gensymb}
+\usepackage{fancyhdr}
+\usepackage{wrapfig} % Se usa para integrar las figuras en el texto
+
+
+\title{Tema 5: Series de Fourier}
+\author{Gonzalo Bastos González}
+\date{Métodos matemáticos III}
+
+\newtheorem{theorem}{Teorema}
+\newtheorem{mydef}{Definición}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\newpage
+
+\section{Introducción}
+
+Las series de Fourier son una herramienta matemática que nos permite analizar funciones periódicas descomponiéndolas en series de senos y cosenos. En primer lugar debemos definir el concepto de función periódica.
+
+\begin{mydef}
+    Decimos que una función es periódica si cumple que:
+    \begin{equation*}
+        f(x) = f(x+T)
+    \end{equation*}
+    
+\end{mydef}
+
+Por ejemplo, $\sin(x)$ y $\cos(x)$ tienen periodo $2\pi$.
+
+\par Otro concepto importante es el de paridad e imparidad de una función.
+
+\begin{mydef}
+    Decimos que una función es par si verifica que:
+    \begin{equation*}
+        f(x)=f(-x)
+    \end{equation*}
+    Decimos que una función es impar si verifica que:
+    \begin{equation*}
+        f(x)=-f(-x)
+    \end{equation*}
+\end{mydef}
+
+La función $\sin(x)$ es impar y la función $\cos(x)$ es par. Algunas de las propiedades de las funciones pares e impares son:
+
+\begin{theorem}
+    Sea $f(x)$ una función par y $g(x)$ y $h(x)$ funciones impares cumplen que:
+    \begin{itemize}
+        \item $g(0)=0$
+        \item $\int_{-a}^a f(x) \,dx = 2 \int_0^a f(x)\,dx$
+        \item $\int_a^{a}g(x) \, dx =0$
+        \item $f(x)g(x)$ es impar
+        \item $g(x)h(x)$ es par
+    \end{itemize}
+\end{theorem}
+
+Respecto a las últimas propiedades la operación entre funciones pares e impares funciona igual que la multiplicación de positivos y negativos. Par por par e impar por impar dan funciones pares y par por impar da una función impar. Si aplicamos estas propiedades a las funciones seno y coseno tenemos que para $n=1,2,\cdots \in \mathbb{N}$:
+
+\begin{itemize}
+    \item $\int_{-\pi}^{\pi} g(x)\cos(nx) \,dx =0$
+    \item $\int_{-\pi}^{\pi} f(x) \sin(nx) \, dx =0$
+\end{itemize}
+
+\newpage
+
+Podemos demostrar también que toda función $f(x)$ se puede escribir como la suma de una función par y otra impar. Definimos $h(x)$ y $g(x)$ como:
+
+\begin{equation*}
+    h(x) = \frac{1}{2} \left (f(x) + f(-x)\right ) ,\, g(x) = \frac{1}{2} \left (f(x)-f(-x)\right )
+\end{equation*}
+
+donde $h(x)$ es par e $g(x)$ es impar y $f(x)=h(x)+g(x)$
+
+\par Otro concepto importante es el de funciones ortogonales. El ejemplo perfecto de funciones ortogonales son $\sin(nx)$ y $\cos(mx)$ con $n,m = 1,2, \cdots \in \mathbb{N}$. Estas funciones son ortogonales porque verifican las siguientes condiciones:
+
+\begin{theorem}
+    Estas funciones son ortogonales porque se cumple que:
+    \begin{itemize}
+        \item $\int_{-\pi}^{\pi} \sin(nx)\cos(mx) \, dx = 0$
+        \item $\int_{-\pi}^{\pi} \cos(nx)\cos(mx) \, dx = \pi \delta_{nm}$
+        \item $\int_{-\pi}^{\pi} \sin(nx)\sin(mx) \, dx = \pi \delta_{nm}$
+    \end{itemize}
+\end{theorem}
+
+Donde $\delta_{nm}$ es la delta de Kronecker:
+
+\begin{equation*}
+    \delta_{nm} = \left\{ \begin{array}{ll}
+        1 & \text{ si } n=m \\
+        0 & \text{ si } n\neq m 
+    \end{array}\right.
+\end{equation*}
+
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=1\linewidth]{Images T5/sinxcosx.png}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=1\linewidth]{Images T5/sinxsinx.png}
+    \end{subfigure}
+    \caption{Representación de las condiciones de ortogonalidad}
+\end{figure}
+
+En general diremos que dos funciones, $f(x)$ y $g(x)$, son ortogonales en $[a,b]$ si verifican que:
+
+\begin{equation*}
+    \int_a^b f(x)g(x) \, dx = 0
+\end{equation*}
+
+Además de eso, diremos que son ortonormales si su norma es la unidad, siendo su norma:
+
+\begin{equation*}
+    \int_a^b f^2(x) = \int_a^b g^2(x) = 1
+\end{equation*}
+
+Decimos que un conjunto de funciones numerable ${\Psi_n(x)}$ con $n\in \mathbb{N}$ es completo en un intervalo $[a,b]$ si son funciones ortonormales que permiten que cualquier función $f(x)$ se exprese como:
+
+\begin{equation*}
+    f(x) = \sum_n a_n \Psi_n(x)
+\end{equation*}
+
+donde $a_n$ son los coeficientes:
+
+\begin{equation*}
+    a_n = \int_a^b f(x) \Psi_n(x) \, dx
+\end{equation*}
+
+\subsection{Cálculo de la periodicidad de una función}
+
+Antes de empezar en profundidad con las series de Fourier hay que profundizar un poco más en el concepto de periodicidad de una función. Definimos anteriormente que una función periódica verifica que:
+
+\begin{equation*}
+    f(x) = f(x+T)
+\end{equation*}
+
+Normalmente las funciones periódicas con las que vamos a trabajar van a ser trigonométricas, del estilo de $\sin(nx)$ o $\cos(mx)$. Todas las funciones trigonométricas tienen periodo $2\pi$ y además de eso las funciones $\sin(nx)$ y $\cos(mx)$ tienen los periodos $2\pi/n$ y $2\pi/m$ respectivamente.
+
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{Images T5/sin2x.png}
+        \subcaption{$f(x)=\sin(2x) \Rightarrow T=\pi$}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{Images T5/cos4x.png}
+        \subcaption{$f(x)=\cos(4x) \Rightarrow T=\pi/2$}
+    \end{subfigure}
+\end{figure}
+
+Si tenemos una función con periodo $2L$ podemos convertirla en una función con periodo $2\pi$ haciendo el siguiente cambio de variable:
+
+\begin{equation*}
+    x = \frac{Lt}{\pi}
+\end{equation*}
+
+Un ejemplo del cálculo del periodo de una función es $f(t)=\cos\frac{t}{3} + \cos\frac{t}{4}$:
+
+\begin{equation*}
+    f(t) = f(t+T) \Rightarrow \cos\frac{t}{3} + \cos\frac{t}{4} = \cos \frac{t+T}{3} + \cos \frac{t+T}{4}
+\end{equation*}
+
+Conociendo que el coseno tiene periodicidad $2\pi$, $\cos (\theta) = \cos (\theta + 2n\pi)$:
+
+\begin{equation*}
+    \begin{gathered}
+        \frac{T}{3} = 2n\pi \Rightarrow T = 6n\pi \\
+        \frac{T}{4} = 2m\pi \Rightarrow T = 8m\pi
+    \end{gathered}
+\end{equation*}
+
+Estes son los periodos de las trigonométricas que componen la función, el periodo de la función es el mínimo común múltiplo de los dos:
+
+\begin{equation*}
+    T = 24\pi
+\end{equation*}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.65\linewidth]{Images T5/fconperiodo24pi.png}
+    \caption{$f(t)=\cos\frac{t}{3} + \cos\frac{t}{4}$}
+\end{figure}
+
+\section{Desarrollo de Fourier}
+
+Como enunciamos anteriormente, un conjunto numerable de funciones ortonormales con norma unidad completo en el intervalo $[a,b]$ es aquel que permite expresar cualquier función $f(x)$ en función de las componentes del conjunto.
+
+\par Demostramos también que $\sin(nx)$ y $\cos(mx)$ son funciones ortogonales para $n \in \mathbb{N}$. Podemos obtener su función de norma unidad, que se define como:
+
+\begin{equation*}
+    \hat{f}(x) = \frac{f(x)}{\Vert f(x)\Vert} = \frac{f(x)}{\sqrt{\int_a^b f^2(x)\, dx}}
+\end{equation*}
+
+Por lo que las funciones de norma unidad del seno y del coseno son:
+
+\begin{equation*}
+    \begin{gathered}
+        \widehat{\sin(nx)} = \frac{\sin(nx)}{\int_{-\pi}^{\pi} \sin^2(nx)\,dx} = \frac{\sin(nx)}{\sqrt{\pi}} \\
+        \widehat{\cos(mx)} = \frac{\cos(mx)}{\int_{-\pi}^{\pi} \cos^2(mx)\,dx} = \frac{\cos(mx)}{\sqrt{\pi}}
+    \end{gathered}
+\end{equation*}
+
+Por tanto, podemos afirmar que el siguiente conjunto de funciones es un conjunto ortonormal en $[-\pi,\pi]$: $\{\frac{1}{\sqrt{2\pi}},\frac{\sin(nx)}{\sqrt{\pi}},\frac{\cos(mx)}{\sqrt{\pi}}\}$, por lo que es un conjunto completo para aquellas funciones $f(x)$ que tengan periodo $2\pi$.
+
+\begin{theorem}{Teorema de Dirichlet}
+    Sea una función $f(x)$ con periodo $2\pi$, continua excepto en un número finito de puntos, que tiene un número finito de máximos y mínimos en su período y cuya integral del valor absoluto (Norma de la función) converge en el periodo. Si la función cumple estas condiciones admite desarrollo en series de Fourier:
+    \begin{equation*}
+        S_F(x) = \frac{a_0}{2} + \sum_{n=1}^{\infty} a_n \cos(nx) + \sum_{n=1}^{\infty} b_n \sin (nx)
+    \end{equation*}
+
+    Donde los coeficientes tienen los siguientes valores:
+    \begin{equation*}
+        a_0 = \frac{1}{\pi} \int_{-\pi}^{\pi} f(x)\,dx \quad a_n=\frac{1}{\pi} \int_{-\pi}^{\pi} f(x)\cos(nx) \,dx \quad b_n = \frac{1}{\pi} \int_{-\pi}^{\pi} f(x)\sin{nx}\,dx
+    \end{equation*}
+\end{theorem}
+
+A la hora de calcular los coeficientes de la serie de Fourier resulta especialmente útil fijarse en la paridad o imparidad de la función, ya que se anulará una de las series de coeficientes:
+
+\begin{itemize}
+    \item Si es par $\Rightarrow b_n=0 \quad \forall n\in \mathbb{N}$, para que la función no tenga componente seno, que son impares.
+    \item Si es impar $\Rightarrow a_n=0 \quad \forall n\in \mathbb{N}$, para que la función no tenga componente coseno, que son pares.
+\end{itemize}
+
+Otro detalle importante es que si la función presenta alguna discontinuidad en $[-\pi,\pi]$ la serie de Fourier nos da, con el término $\frac{a_0}{2}$, el valor medio entre los lados de la discontinuidad. Por ejemplo, para la función escalón, que cambia de 0 a 1 en $x=0$, el valor de $\frac{a_0}{2}$ sería de $0,5$, el valor medio entre 0 y 1.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.45\linewidth]{Images T5/funcionescalon.png}
+    \caption{Función escalón}
+\end{figure}
+
+A continuación vamos a ver un ejemplo del cálculo de los coeficientes de Fourier para una función par:
+
+\begin{equation*}
+    f(x)= \left\{\begin{array}{lcc}
+        x & \text{si} & x\geq 0\\
+        -x & \text{si} & x\leq 0
+    \end{array}\right.
+\end{equation*}
+
+Como la función es par todos los $b_n$ se anulan, por lo que solo tenemos que calcular una serie:
+
+\begin{equation*}
+    \begin{gathered}
+    a_0=\frac{2}{\pi} \int_0^\pi x \mathrm{~d} x=\left.\frac{x^2}{\pi}\right|_0 ^\pi=\pi \\
+    a_n=\frac{2}{\pi} \int_0^\pi x \cos n x \mathrm{~d} x=\left.\frac{2}{\pi}\left(\frac{x}{n} \sin n x+\frac{1}{n^2} \cos n x\right)\right|_0 ^\pi=2 \frac{\left((-1)^n-1\right)}{\pi n^2}
+    \end{gathered}
+\end{equation*}
+
+Como $n$ es par $\left((-1)^n-1\right)=0$, por lo que $a_n=0$ para los valores pares. Por tanto, vamos a expresar los coeficientes $a_k$ de otra forma, para que queden solo los índices impares en el sumatorio:
+
+\begin{equation*}
+    a_k = \frac{-4}{\pi(2k+1)^2} \quad k=0,1,2,...
+\end{equation*}
+
+Por tanto el desarrollo de Fourier de la función sería:
+
+\begin{equation*}
+    S(x)=\frac{\pi}{2}-\frac{4}{\pi} \sum_{k=0}^{\infty} \frac{1}{(2 k+1)^2} \cos (2 k+1) x
+    \end{equation*}
+
+Otro uso de las series de Fourier es es cálculo de series numéricas, por ejemplo:
+
+\begin{equation*}
+    \sum_{k=0}^{\infty} \frac{1}{(2k+1)^2}
+\end{equation*}
+
+Empleando el desarrollo de Fourier anterior evaluado en $x=0$ podemos ver que:
+
+\begin{equation*}
+    S(0) = \frac{\pi}{2} - \sum_{k=0}^{\infty} \frac{4}{\pi(2k+1)^2} \Rightarrow \sum_{k=0}^{\infty} \frac{1}{(2k+1)^2} = \frac{\pi^2}{8}
+\end{equation*}
+
+\subsection{Series peródicas con periodo $2L$}
+
+Si tenemos una función con perio $[-L,L]$ podemos expresarla como serie de Fourier a partir del siguiente conjunto de funciones ortonormales:
+
+\begin{equation*}
+    \left\{\frac{1}{\sqrt{2 L}}, \frac{1}{\sqrt{L}} \sin \frac{n \pi x}{L}, \frac{1}{\sqrt{L}} \cos \frac{n \pi x}{L}\right\}
+    \end{equation*}
+
+Donde los coeficientes de Fourier son:
+
+\begin{equation*}
+    a_0= \frac{1}{L} \int_{-L}^{L} f(x)\,dx \quad a_n = \frac{1}{L} \int_{-L}^{L} f(x)\cos\left (\frac{n\pi x}{L}\right ) \,dx \quad b_n = \frac{1}{L} \int_{-L}^L f(x)\sin\left (\frac{n\pi x}{L}\right ) \,dx
+\end{equation*}
+
+Por tanto, el desarrollo de Fourier de la función es:
+
+\begin{equation*}
+    S(x) = \frac{a_0}{2} + \sum_{n=0}^{\infty} a_n \cos\left (\frac{n\pi x}{L}\right ) + \sum_{n=0}^{\infty} b_n \sin \left (\frac{n\pi x}{L}\right )
+\end{equation*}
+
+\section{Desarrollo de Fourier de funciones no periódicas}
+
+Si contamos con una función no periódica que está definida solo en una región $[0,L]$ en principio podría parecer que no admite dearrollo de Fourier. No obstante podemos extender la función a $[-L,L]$ haciéndola par por ejemplo, $f(x)=f(-x)$, y declarando el desarrollo válido solo para el intervalo $[0,L]$. Por ejemplo, podemos aplicar esto a la función $f(x)=x^2$ en el intervalo $[0,2]$.
+
+\par En primer lugar, vamos a definir $g(x)=x^2$ en el intervalo $[-2,2]$ y calcular los término $a_0$ y $a_n$, como la función es par entonces $b_n=0$:
+
+\begin{equation*}
+    \begin{gathered}
+    a_0=\frac{1}{2} \int_{-2}^2 x^2 \mathrm{~d} x=\int_0^2 x^2 \mathrm{~d} x=\left.\frac{x^3}{3}\right|_0 ^2=\frac{8}{3} \\
+    a_n=\frac{1}{2} \int_{-2}^2 x^2 \cos \frac{n \pi x}{2} \mathrm{~d} x=\int_0^2 x^2 \cos \frac{n \pi x}{2} \mathrm{~d} x
+    \end{gathered}
+    \end{equation*}
+
+Integrando por partes obtenemos:
+
+\begin{equation*}
+    \begin{gathered}
+    =\frac{2 x^2}{n \pi} \sin \frac{n \pi x}{2}-\int_0^2 \frac{4 x}{n \pi} \sin \frac{n \pi x}{2} \mathrm{~d} x \\
+    =\left.\left[\frac{2 x^2}{n \pi} \sin \frac{n \pi x}{2}+\frac{8 x}{(n \pi)^2} \cos \frac{n \pi x}{2}-\frac{16}{(n \pi)^3} \sin \frac{n \pi x}{2}\right]\right|_0 ^2=\frac{16}{(n \pi)^2}(-1)^n
+    \end{gathered}
+    \end{equation*}
+
+Por tanto el desarrollo de Fourier de la función es:
+
+\begin{equation*}
+    S(x) = \frac{4}{3} + 16\sum_{n=1}^{\infty} \frac{(-1)^n}{(n\pi)^2} \cos \left (\frac{n\pi x}{2}\right )
+\end{equation*}
+
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=1\linewidth]{Images T5/x2orden3.png}
+        \subcaption{Orden 3}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=1\linewidth]{Images T5/x2orden10.png}
+        \subcaption{Orden 10}
+    \end{subfigure}
+    \caption{Desarrollos de Fourier de diferente orden}
+\end{figure}
+
+Por último, podemos escribir los desarrollos de Fourier de forma más compacta empleando números complejos, partiendo de la definición de seno y coseno como exponencial:
+
+\begin{equation*}
+    \cos nx = \frac{1}{2} (e^{inx}+e^{-inx}) \quad \sin nx = \frac{-i}{2} (e^{inx}-e^{-inx})
+\end{equation*}
+
+Por tanto, el desarrollo de Fourier de la función queda como:
+
+\begin{equation*}
+    S(x)=\frac{a_0}{2}+\frac{1}{2} \sum_{n=1}\left(a_n-i b_n\right) e^{i n x}+\frac{1}{2} \sum_{n=1}\left(a_n+i b_n\right) e^{-i n x}
+    \end{equation*}
+
+Si definimos los nuevos coeficientes:
+
+\begin{equation*}
+    c_0 = \frac{a_0}{2} \quad c_n = \frac{1}{2}(a_n-ib_n) \quad c_{-n}=c_n^{*} = \frac{1}{2} (a_n+ib_n)
+\end{equation*}
+
+Tenemos que el desarrollo de Fourier tiene la siguiente expresión simplificada:
+
+\begin{equation*}
+    S(x) = \sum_{n=-\infty}^{\infty} c_n e^{inx}
+\end{equation*}
+
+
+\end{document}

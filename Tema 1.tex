@@ -1,0 +1,852 @@
+% Resumen tema 1 MMIII
+
+\documentclass[a4paper,12pt,titlepage]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[spanish,es-tabla]{babel}
+\usepackage[none]{hyphenat}
+\usepackage[justification=centering]{caption}
+\usepackage{subcaption}
+\usepackage{amssymb, amsmath}
+\usepackage{gensymb}
+\usepackage{fancyhdr}
+\usepackage{wrapfig} % Se usa para integrar las figuras en el texto
+
+
+\title{Tema 1: Cálculo diferencial de funciones de varias variables}
+\author{Gonzalo Bastos González}
+
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\newpage
+
+\section{Campos escalares}
+
+Una función escalar, o campo escalar, es aquella que lleva un $\vec{x}  \in \mathbb R^n$, con $n > 1$, a un $ x \in \mathbb R$, por ejemplo $f(x,y) = x^2+y^2$, y verifica:
+
+\begin{equation**}
+    \vec{x} \in D \subset \mathbb R^n \Rightarrow = f(\vec{x}) \in \mathbb R
+\end{equation**}
+
+Para funciones de $\mathbb R^2 \rightarrow \mathbb R$ y funciones de $\mathbb R^3 en \mathbb R$ podemos hacer una representación gráfica y obtener sus conjuntos de nivel, que se definen como el conjunto de puntos en los que la función toma un determinado valor c:
+
+\begin{equation**}
+    S_{C}=\{\vec{x} \in D \subset \mathbb R^n \mid f(\vec{x})=c \}
+\end{equation**}
+
+\begin{itemize}
+    \item Para funciones de $\mathbb R^2$ en $\mathbb R$ los conjuntos de nivel representan curvas equipotenciales de nivel
+    \item  Para las funciones de $\mathbb R^3$ en $\mathbb R$ los conjuntos de nivel representan superficies equipotenciales de nivel
+\end{itemize}
+
+Para la función $f(x,y) = x^2+y^2$ los conjuntos de nivel son circunferencias de radio $\sqrt{c}$:
+
+\begin{figure}[h!]
+    \begin{subfigure}{0.60\textwidth}
+        \includegraphics[width=0.60\linewidth]{Images/Conjuntos de nivel1-0000.jpg}
+
+    \end{subfigure}
+    \begin{subfigure}{0.60\textwidth}
+        \includegraphics[width=0.90\linewidth]{Images/grafica1.png}
+    \end{subfigure}
+    \caption{Gráfica y conjuntos de nivel de $x^2+y^2=c$ (Paraboloide infinito)}
+\end{figure}
+
+Para una función  de $\mathbb R^2$ en $\mathbb R$ cúanto más cerca estén los conjuntos de nivel más crece la función.
+
+\section{Campos vectoriales}
+
+Las funciones vectoriales son aquellas que llevan a un $\vec{x} \in \mathbb R^n$ a un $\vec{f}(\vec{x}) \in \mathbb R^m$ con $n\geqslant 1$ y $m > 1$. La función está compuesta por \textit{m} funciones componentes, de las que podemos estudiar sus propiedades por separado para conocer el comportamiento de la función. En física son funciones muy habituales que representan fenómenos como los campos eléctrico y gravitatorio.
+
+\begin{equation**}
+    \vec{E} = \frac{q}{4\pi \varepsilon _{o}}= \begin{pmatrix}
+         \frac{x}{(x^2+y^2+z^2)^{3/_2}} & \frac{y}{(x^2+y^2+z^2)^{3/_2}} & \frac{z}{(x^2+y^2+z^2)^{3/_2}}  
+    \end{pmatrix}
+\end{equation**}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width = 0.60\linewidth]{Images/campovectorial.png}
+
+    \caption{Representación del campo electrostático (Campo vectorial)}
+\end{figure}
+
+Algunas propiedades de los campos escalares y vectoriales son:
+
+\begin{enumerate}
+    \item$(\vec{f} \pm \vec{g})(\vec{x}) = \vec{f}(\vec{x}) \pm \vec{g}(\vec{x})$
+    
+    \item$(h \cdot \vec{f}){\vec{x}} = h(\vec{x}) \cdot \vec{f}(\vec{x})$
+    \item $(\vec{r}\circ \vec{f})(\vec{x}) = \vec{r}(\vec{f}(\vec{x}))$ 
+\end{enumerate}
+
+Siendo $\vec{f} , \vec{g} , \vec{r}$ campos vectoriales y $h$ un campo escalar arbitrario.
+
+
+\section{Límites}
+
+Para una función cualquiera la definición de límite es:
+
+\begin{equation**}
+    f(\vec{x}) \rightarrow B \; cuando \; \vec{x} \rightarrow \vec{L}, \Leftrightarrow \forall  \epsilon > 0, \exists \delta > 0 \mid \vert \vec{x}-\vec{L} \vert < \delta \Rightarrow \vert f(\vec{x}) - B \vert < \epsilon
+\end{equation**}
+
+Para las funciones escalares el límite existe si no depende de la dirección en la que nos acercamos. En el caso de las funciones vectoriales todas las funciones componentes tienen que tener límite.
+
+
+\subsection{Estrategias para probar que $\exists$ límite}
+
+\begin{itemize}
+    \item Si la función es continua y está definida en $x_{o}$ entonces tiene límite en $x_{o}$.
+    \item Paso a polares, solo si el límite a estudiar es en el origen. Hacemos el siguiente cambio de coordenadas:
+    
+    \begin{equation**}
+        x = r \cos \theta \; \; \; y = r \sin \theta \Rightarrow
+        \lim_{(x,y) \to (0,0)}  f(x,y) = \lim_{r \to 0} f(r,\theta)
+    \end{equation**}
+
+    La función tiene límite en el origen si el límite de $f(r,\theta)$ vale 0 y no depende de $\theta$ (O está acotado, porque 0 por acotado es 0). Un ejemplo sería:
+
+    \begin{equation**}
+        \lim_{(x,y) \to (0,0)} \frac{y^3}{x^2+y^2} = \lim_{r \to 0} \frac{r^3 \sin^3 \theta}{r^2} = \lim_{r \to 0} r \sin^3 \theta = 0
+    \end{equation**}
+
+
+    \item Si la función es una composición de funciones el límite es el límite de la composición, por ejemplo:
+    
+    \begin{equation**}
+        \lim_{(x,y) \to (0,0)} \frac{\sin (x^2 y)}{x^2 y} = \lim_{g \to 0} \frac{\sin g}{g} = 1
+    \end{equation**}
+
+    \item Teorema del sandwich, si conseguimos acotar la función a estuiar por otras dos funciones que convergen a lo mismo. Es útil cuando hay senos y cosenos multiplicando o en relaciones como $-(x^2+y^2) \leqslant 2xy \leqslant x^2 + y^2$. Un ejemplo sería:
+    
+    \begin{equation**}
+        \lim_{(x,y) \to (0,0)} \frac{2yx^2}{x^2+y^2} = 0, \; -x \leqslant \frac{2yx^2}{x^2+y^2} \leqslant x, \; \lim_{x \to 0} x = 0
+    \end{equation**}
+
+    \item Aproximaciones por Taylor en puntos próximos al origen
+
+\end{itemize}
+
+\newpage
+
+\subsection{Estrategias para probar que $\nexists $ límite}
+
+La mayoría de estas estrategias solo aportan información en caso de que no exista el límite, si existe no aportan información.
+
+\begin{itemize}
+    \item Límites reiterados distintos, si los límites reiterados coinciden de existir el límite toma ese valor. Por ejemplo:
+    
+    \begin{equation**}
+        \lim_{(x,y) \to (0,0)} \frac{xy-x+y}{x+y} = \nexists
+    \end{equation**}
+
+    Para demostrarlo vamos a calcular los límites reiterados y veremos que no son iguales
+
+    \begin{equation**}
+        \lim_{x \to 0 }[\lim_{y \to 0} \frac{xy-x+y}{x+y}] = \lim_{x \to 0}[\lim_ {y \to 0} \frac{-x}{x}] = -1
+    \end{equation**}
+
+    \begin{equation**}
+        \lim_{y \to 0 }[\lim_{x \to 0} \frac{xy-x+y}{x+y}] = \lim_{y \to 0}[\lim_ {x\to 0} \frac{y}{y}] = 1
+    \end{equation**}
+
+    \item Aproximación por rectas o curvas, si el límite depende de la trayectoria en la que nos aproximemos no existe. Para obtener una curva que demuestre que el límite no existe es útil a veces igualar el numerador y el denominador en funciones del tipo $f(x,y) = \frac{g(x,y)}{h(x,y)}$ y despejar $y$. Otro método muy útil es aproximarnos por una curva que depende de un parámetro y si el límite depende de ese parámetro podemos afirmar que no existe. Podemos aplicar este método por ejemplo a $F(x,y)=\frac{2xy}{x^2+y^2}$ en $(0,0)$, realizando un cambio de variable $y=\lambda x$:
+    
+    \begin{equation**}
+        \lim_{(x,y) \to (0,0)} f(x,y) = \lim_{x \to 0} f(x,\lambda x) = \frac{2\lambda x^2}{x^2+ \lambda^2x^2} = \frac{\lambda}{1+\lambda^2}
+    \end{equation**}
+
+    \item Paso a coordenadas polares en el que el límite depende del ángulo
+\end{itemize}
+
+Estos métodos se aplican solo si el límite es en el origen pero se pueden aplicar a cualquier punto haciendo una traslación.
+
+\newpage
+
+\subsection{Continuidad}
+Para que una función escalar o vectorial sea continua solo hace falta que el límite sea igual a la función en ese punto. Además de eso la continuidad de funciones vecoriales cumple las siguientes propiedades:
+\newline Sean $\vec{f}$ y $\vec{g}$ funciones continuas en un punto, las siguientes funciones también son continuas en ese punto:
+
+\begin{itemize}
+    \item $\vec{f}(x) + \vec{g}(x)$
+    \item $\alpha \vec{f}(x); \alpha \in \mathbb R$
+    \item $\vec{f}(x) \cdot \vec{g}(x)$
+    \item $\Vert  \vec{f}(x) \Vert$ 
+\end{itemize}
+
+\section{Derivada direccional}
+
+Vamos a partir de la definición de derivada para funciones reales en un punto para ampliarla a campos escalares arbitrarios, epecialmente funciones del tipo $f(x,y)$ y $f(x,y,z)$.
+
+\begin{equation**}
+    f'(x) = \lim_{h \to 0} \frac{f(x+h)-f(x)}{h}
+\end{equation**}
+
+Donde h representa un crecimiento infinitamente pequeño en el eje x. La derivada en $x_{o}$ de una función real $\left(\frac{d f(x)}{dx} \right)$ representa la pendiente de la recta tangente a la función en ese punto. En funciones de $\mathbb R^2 \rightarrow \mathbb R$ el crecimiento puede darse en cualquier dirección del plano XY y vendrá dada por el vector $\vec{v}$ en la definición de derivada.
+
+\begin{figure}[h!]
+    \begin{subfigure}{0.60\textwidth}
+        \includegraphics[width=0.50\linewidth]{Images/vectores derivada.png}
+
+    \end{subfigure}
+    \begin{subfigure}{0.60\textwidth}
+        \includegraphics[width=0.70\linewidth]{Images/derivadadireccional.jpeg}
+    \end{subfigure}
+    \caption{Derivada direccional en una dirección $\vec{v}$ arbitraria}
+\end{figure}
+
+\newpage 
+
+Para estas funciones la superficie tangente a la función será un plano. La pendiente de este plano dependerá de la dirección en la que nos movamos y coincidirá con el valor de la derivada direccional. Será máxima cuando la dirección en la que nos movemos es perpendicular al plano tangente (Gradiente) y mínima cuando la dirección sea paralela al plano.
+
+\par Generalizando a cualquier función vectorial la definición de derivada en la dirección $\vec{v}$ es la siguiente:
+
+\begin{equation**}
+    \vec{f'}(\vec{x};\vec{v}) = \lim_{h \to 0} \frac{\vec{f}(\vec{x}+h \vec{v})-\vec{f}(\vec{x})}{h}
+\end{equation**}
+
+\subsection{Derivadas parciales}
+
+Sea $f$ una función escalar, sus derivadas parciales se definen como las derivadas direccionales en las que solo aumenta una variable. Para funciones 2D las direcciones serán $(1,0)$ y $(0,1)$. Para escribir la derivada parcial usamos la siguiente notación: $\frac{\partial f(x_{i},...,x_{n})}{\partial x_{i}}$. Para calcular las derivadas parciales de una función derivamos respecto a una variable y tomamos las otras como constantes, por ejemplo si $f(x,y)= x^2y+y$:
+
+\begin{align*}
+    \frac{\partial f(x,y)}{\partial x} &= 2xy\\
+    \frac{\partial f(x,y)}{\partial y} &= x^2+1
+\end{align*}
+
+Para las derivadas segundas y sucesivas la notación es la siguiente:
+
+\begin{equation**}
+    f''_{x_{i}x_{k}}(x_{1},...,x_{n}) = \frac{\partial^2 f(x_{1},...,x_{n})}{\partial x_{i}x_{k}}
+\end{equation**}
+
+Si $k=i$ se denominan derivadas segundas y si $k \neq i$ derivadas cruzadas. En general las derivadas cruzadas son iguales (Da igual derivar derivar primero respecto de x o respecto de y). Esto se cumple en los casos en que f es de clase 2, cuando sus derivadas parciales segundas son continuas en todos los puntos de su dominio. El lema de Schwarz nos dice que si esto se cumple las derivadas cruzadas son simétricas.
+
+\newpage
+
+\subsection{Diferenciabilidad}
+Una función real es diferenciable si se podía aproximar por su desarrollo de Taylor de primer orden:
+
+\begin{equation**}
+    f(x) \approx f(x_{o}) + f'(x_{o}(x_{0}-x))
+\end{equation**}
+
+Esta expresión es bastante similar a la de una recta de pendiente $a$ que pasa por $x_{o}$: $y=y_{o}+a(x-x_{o})$, donde se pueden apreciar claramente los paralelismos.
+
+\par Si tratamos ahora con funciones 2D debemos adaptar la condición de diferenciabilidad, ahora vamos a aproximar la función (En un entorno pequeño) por un plano de pendiente $A$ en el eje X y de pendiente $B$ en el Y.
+
+\begin{equation**}
+    z(x,y) = z_{o} + A(x_{o}-x) + B(y_{o}-y)
+\end{equation**}
+
+Si hacemos un paralelismo con las funciones reales el desarrollo de Taylor de primer orden para funciones 2D es el siguiente:
+
+\begin{equation**}
+    f(x,y)  \approx f(x_{o},y_{o}) + \frac{\partial f(x_{o},y_{o})}{\partial x} (x_{o}-x) + \frac{\partial f(x_{o},y_{o})}{\partial y} (y_{o}-y)
+\end{equation**}
+
+Los valores $(x_{o}-x)$ y $(y_{o}-y)$ son las componentes del vector de la dirección en la que nos movemos, $\vec{v}=(x_{o}-x,y_{o}-y)$. Podemos agrupar entonces las derivadas parciales en otro vector y escribir la segunda parte de la fórmula como un producto escalar, obteniendo así el desarrollo de Taylor de primer orden para funciones 2D.
+
+\begin{equation**}
+    f(x,y) \approx f(x_{o},y_{o}) + \vec{\nabla}(x_{o},y_{o}) \vec{v}
+\end{equation**}
+
+Siendo $\vec{\nabla}(x_{o},y_{o})$ el vector gradiente evaluado en $(x_{o},y_{o})$. Si la función escalar se puede aproximar por su desarrollo de Taylor de primer orden entonces, como en las funciones reales, podemos afirmar que es derivable.
+
+\par En la práctica estudiaremos la derivabilidad en base a dos condiciones:
+
+\begin{itemize}
+    \item Condición \textbf{necesaria}: Que la función sea continua en el punto
+    \item Condición \textbf{suficiente}: Que las derivadas parciales sean continuas en el punto, a estas curvas se le denomina curvas suaves
+\end{itemize}
+
+No obstante la condición suficiente no es necesaria, por lo que puede no tener derivadas parciales continuas y ser derivable. Los puntos donde pasa eso son puntos críticos.
+
+\section{Vector gradiente y matriz jacobiana}
+
+\subsection{Vector gradiente}
+
+Definimos el vector gradiente de una función escalar como el vector que tiene como componentes las derivadas parciales de la función.
+
+\begin{equation**}
+    \vec{\nabla} f(x_{1},...,x_{n}) = \begin{pmatrix}
+        \frac{\partial f(\vec{x})}{\partial x_{1}}, & ... & ,\frac{\partial f(\vec{x})}{\partial x_{n}}
+    \end{pmatrix}
+\end{equation**}
+
+Como vimos antes, una función escalar se puede aproximar por su desarrollo de Taylor, por tanto:
+
+\begin{equation**}
+    f(\vec{x_{o}}) = f(\vec{x_{o}}) + \vec{\nabla}f(\vec{x_{o}}) \vec{v} \Rightarrow \vec{\nabla}f(\vec{x_{o}}) \vec{v} = 0
+\end{equation**}
+
+Solo hay dos formas de que ese producto escalar valga $0$, que el gradiente o $\vec{v}$ sean 0 (Esto último no es posible porque suponemos que hay algo de desplazamiento), o que ambos vectores sean perpendiculares. Por tanto, como lo segundo no impide lo primero, podemos afirmar que el gradiente es siempre perpendicular a la gráfica de la función. Además de eso podemos afirmar también que el gradiente apunta en la dirección de máximo crecimiento de la función.
+
+\par Una aplicación del gradiente es el cálculo del plano tangente a una superficie en un punto (Gracias a que por ser perpendicular a la superficie podemos tomarlo como vector normal del plano). Los pasos a seguir son los siguientes:
+
+\begin{enumerate}
+    \item Sea $S$ una superficie de ecuación $S(x,y,z)$, calculamos su gradiente en $(x_{o},y_{o},z_{o})$
+    \item Tomando el gradiente como el vector normal del plano, sustituimos en la ecuación normal del plano $(Ax+By+Cz+D=0)$.
+    \item Resolvemos la ecuación del plano despejando $D$ y obtenemos la ecuación del plano en su forma normal
+\end{enumerate}
+
+\subsection{Matriz jacobiana}
+
+En funciones vectoriales $(\mathbb R^n \rightarrow \mathbb R^m)$ la condición de diferenciabilidad debe extenderse a sus $m$ funciones componentes. Todas sus funciones escalares deben ser continuas en ese punto, además de las derivadas parciales de todas las funciones. El desarrollo de Taylor de una función vectorial puede entenderse como $m$ desarrollos de Taylor de funciones escalares en el punto $x_{o}$:
+
+\begin{align*}
+    f_{1}(x_{1},...,x_{n}) & \approx f_{1}(\vec{x_{o}})+ \vec{\nabla}f_{1}(\vec{x_{o}}) \vec{v} \\ &.\\ &. \\ &. \\ f_{1}(x_{1},...,x_{n}) & \approx f_{m}(\vec{x_{o}})+ \vec{\nabla}f_{m}(\vec{x_{o}}) \vec{v}
+\end{align*}
+
+Esta condición de diferenciabilidad puede expresarse de forma matricial de la siguiente forma:
+
+\begin{equation**}
+    \vec{f}(x_{1},...,x_{n}) \approx \vec{f}(\vec{x_{o}}) + D\vec{f}(\vec{x_{o}}) \vec{v}
+\end{equation**}
+
+Donde D es la matriz jacobiana de la función evaluada en $x_{o}$, que tiene por elementos:
+
+\begin{equation**}
+    D\vec{f_{ij}} = \frac{\partial f_{i}}{\partial x_{j}} \text{, con i } = 1,2,...,m \; j=1,2,...,n
+\end{equation**}
+
+Por ejemplo para una función vectorial $\mathbb R^3 \rightarrow \mathbb R^3$ tal que $\vec{f}(x,y,z)=(f_{1}(x,y,z),f_{2}(x,y,z),f_{2}(x,y,z))$, su matriz jacobiana es la siguiente:
+
+\begin{equation**}
+    D \vec{f}(x,y,z) = \begin{pmatrix}
+        \frac{\partial f_{1}}{\partial x} & \frac{\partial f_{1}}{\partial y} & \frac{\partial f_{1}}{\partial z} \\
+
+        \frac{\partial f_{2}}{\partial x} & \frac{\partial f_{2}}{\partial y} & \frac{\partial f_{2}}{\partial z} \\
+
+        \frac{\partial f_{3}}{\partial x} & \frac{\partial f_{3}}{\partial y} & \frac{\partial f_{3}}{\partial z} \\
+    \end{pmatrix}
+\end{equation**}
+
+Al igual que en las funciones escalares, para las funciones vectoriales podemos comprobar dos condiciones para estudiar su diferenciabilidad:
+
+\begin{itemize}
+    \item Condición \textbf{necesaria}: Las funciones componentes tienen que ser continuas
+    \item Condición \textbf{suficiente}: Tener las derivadas parciales continuas
+\end{itemize}
+
+\subsection{Propiedades del gradiente y la jacobiana}
+
+Sean $\vec{f},\vec{g}$ funciones vectoriales y $f,g$ funciones escalares:
+
+\begin{itemize}
+    \item $D[\vec{f} + \vec{g}] = D\vec{f} + D\vec{g}$
+    \item $D[\alpha \vec{f}]= \alpha D \vec{f}$
+    \item $\vec{\nabla}[f(\vec{x})g(\vec{x})] = \vec{\nabla} f(\vec{x}) g(\vec{x}) + \vec{\nabla} g(\vec{x}) f(\vec{x}) $
+    \item $\vec{\nabla}[\frac{f(\vec{x})}{g(\vec{x})}] = \frac{\vec{\nabla}f(\vec{x})g(\vec{x})-\vec{\nabla}g(\vec{x}f(\vec{x}))}{g^2(\vec{x})}$
+\end{itemize}
+
+
+\subsection{Diferenciabilidad de funciones a partir del gradiente y la jacobiana}
+
+Para estudiar la diferenciabilidad de una función escalar arbitraria en $x_{o}$ debemos comprobar si es igual a su desarrollo de Taylor de primer orden en ese punto. Para ello construimos una función error, compuesta por la resta de las función y su desarrollo de Taylor y comprobamos que para un entorno infinitamente próximo al punto el límite de la función error vale 0:
+
+\begin{equation**}
+    \lim_{\vec{v} \to \vec{x_{o}}} E(\vec{x_{o}},\vec{v}) = \lim_{\vec{v} \to \vec{x_{o}}} \frac{f(\vec{x_{o}}+\vec{v})-T(\vec{x_{o}},\vec{v})}{\Vert \vec{v} \Vert} = \lim_{\vec{v} \to \vec{x_{o}}} \frac{f(\vec{x_{o}}+\vec{v})-f(\vec{x_{o}})-Df(\vec{x_{o}})\vec{v}}{\Vert \vec{v} \Vert} = 0
+\end{equation**}
+
+Un ejemplo de la aplicación de este método sería la siguiente función:
+
+\begin{equation**}
+    f(x,y) = \begin{cases}
+        x^2+ y^2 &: (x,y) \neq (0,0) \\
+        0 &: (x,y) = (0,0)
+    \end{cases}
+\end{equation**}
+
+Para esta función:
+
+\begin{itemize}
+    \item $ \vec{v} = (\vec{x}-\vec{x_{o}}) = ((x,y)-(0,0)) \Rightarrow \Vert \vec{v} \Vert = \sqrt{x^2+y^2}$
+    \item $f(\vec{x_{o}+\vec{v}}) = x^2 + y^2$
+    \item $f(\vec{x_{o}})$ = 0
+    \item $Df(\vec{x_{o}}) = \vec{\nabla}f(\vec{x_{o}}) = (2x,2y)$
+\end{itemize}
+
+Por tanto el límite es el siguiente, que si resolvemos cambiando a coordenadas polares podemos comprobar que vale 0:
+
+\begin{equation**}
+    \lim_{(x,y) \to (0,0)} = \frac{x^2+y^2-0-(2x,2y)\cdot(x,y)}{\sqrt{x^2+y^2}} = \lim_{(x,y) \to (0,0)} \frac{-(x^2+y^2)}{\sqrt{x^2+y^2}} = 0 
+\end{equation**}
+
+\section{Regla de la cadena}
+
+Sea la función escalar de $\mathbb R^2 \rightarrow \mathbb R$ $f(x,y) = \frac{x^2}{2} + \frac{y^2}{8}$ y la función escalar de $\mathbb R \rightarrow \mathbb R^2$ $\vec{g} = \cos (t) \hat{\imath} +\sin (t) \hat{\jmath} $ podemos obtener una composición $f(\vec{g}(t))$ que vaya de $\mathbb R \rightarrow \mathbb R$, este es un ejemplo de composición de funciones con varias variables. El requisito para poder hacer una composición con dos funciones arbitrarias es que la dimensión de la imagen de la primera función sea la misma que la dimensión del espacio origen de la segunda función, en nuestro ejemplo $\mathbb R \underbrace{\rightarrow}_{\vec{g}(t)} R^2 \underbrace{\rightarrow}_{f(x,y)} R $.
+
+\newpage
+
+\par Otro ejemplo de aplicación de la regla de la cadena son los cambios de coordenadas, que son funciones vectoriales con el mismo espacio de entrada que de salida y que son diferenciables y biyectivas. Algunos ejemplos de eso son las coordenadas esféricas y cilíndricas para funciones 3D.\newline
+
+\begin{figure}[h!]
+    \begin{subfigure}{0.60\textwidth}
+        \includegraphics[width=1.10\linewidth]{Images/coordCilindricas.png}
+
+    \end{subfigure}
+    \begin{subfigure}{0.60\textwidth}
+        \includegraphics[width=0.60\linewidth]{Images/coordEsfericas.png}
+    \end{subfigure}
+    \caption{Coordenadas cilíndricas y esféricas}
+\end{figure}
+
+El cambio a coordenadas cilíndricas es el siguiente:
+\begin{align*}
+    x &= \rho \cos (\varphi) \\
+    y &= \rho \sin (\varphi) \\
+    z &= z
+\end{align*}
+
+El cambio a coordenadas esféricas es el siguiente:
+\begin{align*}
+    x &= r \sin (\theta) \cos (\phi) \\
+    y &= r \sin (\theta) \sin(\phi) \\
+    z &= z \cos (\theta)
+\end{align*}
+
+\newpage
+\subsection{La jacobiana y la regla de la cadena}
+
+Para una composición de dos funciones arbitrarias la jacobiana de la composición es el producto de las jacobianas de las funciones:
+
+\begin{equation**}
+    D(\vec{f}\circ \vec{g})(\vec{x}) = D\vec{f}(\vec{g}(\vec{x}))\cdot D\vec{g}(\vec{x})
+\end{equation**}
+
+En el caso de que alguna de las funciones fuese escalar la jacobiana sería un gradiente, por ejemplo:
+
+\bigskip
+
+\par Sean las funciones:  $\vec{g}(x,y,z) = (x^2y,y^2, e^{-xz})$ y $f(u,v,w)=u^2+v^2-w$ vamos a calcular el gradiente de su composición $h = f \circ \vec{g}: \mathbb R^3 \rightarrow \mathbb R$:
+
+\begin{equation**}
+    \vec{\nabla}f(u,v,w) = (2u,2v,-1)
+\end{equation**}
+
+\begin{equation**}
+    D\vec{g} = \begin{pmatrix}
+        2xy & x^2 & 0\\
+        0   & 2y  & 0\\
+        -ze^{-xz} & 0 & -xe^{-xz}
+    \end{pmatrix}
+\end{equation**}
+
+\begin{equation**}
+    \vec{\nabla}h(x,y,z) =  (2u,2v,-1) \cdot 
+    \begin{pmatrix}
+        2xy & x^2 & 0\\
+        0   & 2y  & 0\\
+        -ze^{-xz} & 0 & -xe^{-xz}
+    \end{pmatrix} 
+    = (4uxy + ze^{-xz},2ux^2+4vy, xe^{-xz})
+\end{equation**}
+
+Sustituyendo $u=x^2y$, $v= y^2$ y $w = e^{-xz}$ obtenemos:
+
+\begin{equation**}
+    \vec{\nabla}h = (4x^3y^2+ze^{-xz}, 2x^4y+4y^3,xe^{-xz})
+\end{equation**}
+
+Si nos piden el valor de la jacobiana o gradiente en un punto determinado muchas veces es más fácil sustituir el punto antes de hacer la multiplicación matricial.
+
+\bigskip
+
+\par \underline{\textbf{Teorema de la regla de la cadena:}}
+Sean $\vec{g}: \mathbb R^n \rightarrow \mathbb R^m$ diferenciable en $\vec{x}$ y $\vec{f}:\mathbb R^m \rightarrow \mathbb R^p$ diferenciable en $\vec{g}(\vec{x})$ entonces la función compuesta es diferenciable en dicho punto y se calcula utilizando la regla de la cadena.
+
+\newpage
+
+\section{Máximos y mínimos de funciones escalares}
+
+\subsection{Desarrollo de Taylor de segundo orden}
+
+Para una función real un extremo, máximo o mínimo, es aquel punto donde la recta tangente es paralela al eje X (La función se puede aproximar por la recta $y=k$), es decir que la primera derivada es nula. Para saber como se comporta la función en ese entorno con derivada nula debemos estudiar su segunda derivada también, con el desarrollo de Taylor de segundo orden:
+
+\begin{equation**}
+    f(x) \approx f(x_{o}) +f'(x_{o})(x-x_{o})+\frac{1}{2}f''(x_{o})(x-x_{o})^2
+\end{equation**}
+
+\begin{itemize}
+    \item \textbf{Mínimos}: La segunda derivada es positiva, debido al factor $(x-x_{o})^2$ nos movamos en la dirección que nos movamos la función va a tomar un valor superior a $f(x_{o})$.
+    \item \textbf{Máximos}: La segunda derivada es negativa, el signo del sumando solo depende de la segunda derivada, por lo que esta debe ser negativa para que la función siempre sea menor que $f(x_{o})$.
+\end{itemize}
+
+Para funciones en 2D el desarrollo de Taylor de segundo orden tiene la siguiente forma:
+
+\begin{equation**}
+    f(x,y) \approx f(x_{o},y_{o}) + \vec{\nabla}f(x_{o},y_{o})\begin{pmatrix}
+        x-x_{o} \\ y-y_{0}
+    \end{pmatrix}
+    + \frac{1}{2} \begin{pmatrix}
+        x-x_{o} & y-y_{o}
+    \end{pmatrix} H_{(x_{o},y_{o})} \begin{pmatrix}
+        x-x_{o} \\ y-y_{0}
+    \end{pmatrix}
+\end{equation**}
+
+Si operamos y tomamos a $(x-x_{o},y-y_{o})$ como $v$ tenemos que:
+
+\begin{equation**}
+    f(x,y) \approx f(x_{o},y_{o}) + \vec{\nabla}f(x_{o},y_{o}) \vec{v}
+    + \frac{1}{2} \mathcal{H}_{(x_{o},y_{o})} \Vert \vec{v} \Vert ^2
+\end{equation**}
+
+Donde $H$ es la matriz Hessiana formada por las segundas derivadas de la función escalar. LA Hessiana se define de la siguiente forma:
+
+\begin{equation**}
+    \mathcal{H}  f(x_{1},x_{2},...,x_{n}) = \begin{pmatrix}
+        \frac{\partial^2 f}{\partial x_{1}^2} & \frac{\partial^2 f}{\partial x_{1}\partial x_{2}}& \cdots & \frac{\partial^2 f}{\partial x_{1}\partial x_{n}} \\
+
+        \frac{\partial^2 f}{\partial x_{2}\partial x_{1}} & \frac{\partial^2 f}{\partial x_{2}^2}& \cdots & \frac{\partial^2 f}{\partial x_{2}\partial x_{n}} \\
+
+        \vdots & \vdots & \ddots & \vdots \\
+
+        \frac{\partial^2 f}{\partial x_{n}\partial x_{1}} & \frac{\partial^2 f}{\partial x_{n}\partial x_{2}}& \cdots & \frac{\partial^2 f}{\partial x_{n}^2}
+    \end{pmatrix}
+\end{equation**}
+
+\newpage
+
+Para una función 3D $f(x,y,z)$ su matriz hessiana sería la siguiente:
+
+\begin{equation**}
+    \begin{pmatrix}
+        \frac{\partial^2 f}{\partial x^2} & \frac{\partial^2 f}{\partial x \partial y} & \frac{\partial^2 f}{\partial x \partial z} \\ \frac{\partial^2 f}{\partial y \partial x} & \frac{\partial^2 f}{\partial y^2} & \frac{\partial^2 f}{\partial y \partial z} \\ \frac{\partial^2 f}{\partial z \partial x} & \frac{\partial^2 f}{\partial z \partial y} & \frac{\partial^2 f}{\partial z^2}
+    \end{pmatrix}
+\end{equation**}
+
+\bigskip
+
+\textbf{Ejemplo}: Cálculo del desarrollo de Taylor de segundo orden de la función $f(x,y) = \sin(xy)$ entorno al punto $(1,\pi / 2)$:
+
+\begin{equation**}
+    f(1,\pi /2) = sin(\pi /2) = 1
+\end{equation**}
+
+\begin{equation**}
+    \vec{\nabla}f(1,\pi / 2) = (y \cos(xy), x \cos(xy))_{(1,\pi/2)} = (0,0)
+\end{equation**}
+
+\begin{equation**}
+    \mathcal{H} (1,\pi /2) = \begin{pmatrix}
+        -y^2\sin(xy) & \cos(xy) - xy \sin{xy} \\
+        \cos(xy) -xy \sin{xy} &-x^2 \sin{xy}
+    \end{pmatrix}_{(1,\pi /2)} = \begin{pmatrix}
+        -\pi^2/4 & -\pi /2 \\
+        -\pi /2 & -1
+    \end{pmatrix}
+\end{equation**}
+
+Por tanto el desarrollo de Taylor es el siguiente:
+
+\begin{equation**}
+    f(x,y) \approx f(1,\pi /2) + \vec{\nabla} f(º,\pi/2) \begin{pmatrix}
+        x-1 \\ y - \pi/2
+    \end{pmatrix} + \frac{1}{2} \begin{pmatrix}
+         x-1 & y - \pi /2
+    \end{pmatrix}\cdot \begin{pmatrix}
+        -\pi^2/4 & -\pi /2 \\
+        -\pi /2 & -1
+    \end{pmatrix} \begin{pmatrix}
+        x-1 \\ y - \pi/2
+    \end{pmatrix}
+\end{equation**}
+
+\begin{equation**}
+    f(x,y) \approx 1-\frac{\pi^2}{8}(x-1)^2-\frac{\pi}{2}(x-1)(y-\frac{\pi}{2}) .\frac{1}{2}(y-\frac{\pi}{2})^2
+\end{equation**}
+
+\subsection{Cálculo de máximos y mínimos de funciones escalares}
+
+El procedimiento para calcular los máximos y mínimos de una función escalar arbitraria es similar al que seguimos con las funciones reales, valiéndonos del desarrollo de Taylor de segundo orden:
+
+\begin{enumerate}
+    \item Calculamos los puntos en los que $\vec{\nabla}f = 0$. Esos puntos son candidatos a extremos.
+    \item Para estudiar que carácter tiene la función en esos puntos debemos evaluar la matriz hessiana en los puntos y diagonalizarla para calcular sus autovalores. El carácter de la función en ese punto va a depender del signo de los autovalores:
+    \newpage
+    \begin{itemize}
+        \item Todos los autovalores negativos $\Rightarrow$ Máximo
+        \item Todos los autovalores positivos $\Rightarrow$ Mínimo
+        \item Autovalores negativos y positivos $\Rightarrow$ Punto silla
+    \end{itemize}
+\end{enumerate}
+
+En caso de que alguno de los autovalores sea 0 este método no decide. Otro método para estudiar el carácter del punto crítico es el determinante de la Hessiana:
+
+\begin{enumerate}
+    \item $det(\mathcal{H}) < 0 \Rightarrow$ Punto silla
+    \item $det(\mathcal{H}) >0$:
+        \begin{itemize}
+            \item $\mathcal{H}_{xx} >0 \Rightarrow $ Mínimo
+            \item $\mathcal{H}_{xx} <0 \Rightarrow $ Máximo
+        \end{itemize}
+\end{enumerate}
+
+Siendo $\mathcal{H}_{xx}$ el elemento $\mathcal{H}_{ij} $ con $i=1$ y $j=1$, es decir, el primer elemento de la Hessiana.
+
+\begin{figure}[h!]
+    \begin{subfigure}{0.60\textwidth}
+        \centering
+        \includegraphics[width=1\linewidth]{Images/maximo y minimo.png}
+
+    \end{subfigure}
+    \begin{subfigure}{0.60\textwidth}
+        \centering
+        \includegraphics[width=1\linewidth]{Images/punto silla.png}
+    \end{subfigure}
+    \caption{Máximos, mínimos y punto silla de una función escalar respectivamente}
+\end{figure}
+
+Después de diagonalizar la Hessiana y calcular los autovalores nos pueden pedir que determinemos los ejes de simetría de la función. Para ello tenemos que calcular los autovectores de la Hessiana. El número de autovectores es igual al número total de autovalores (Teniendo en cuenta la multiplicidad de los autovalores) y se calculan resolviendo el siguiente sistema:
+
+\begin{equation**}
+    \mathcal{H} f(\vec{x_{o}}) \vec{v} = \lambda \vec{v}
+\end{equation**}
+
+La dirección de los ejes de simetría vendrá dada por la dirección de los autovectores.
+
+\section{Extremos condicionados con el método de los multiplicadores de Lagrange}
+
+Sea una función escalar arbitraria con gradiente definido en todos los puntos. Supongamos que colocamos una partícula en el espacio origen $(\mathbb R^n)$ que va a moverse en la dirección del gradiente (En la dirección de máximo crecimiento de la función). Si ahora fijamos una curva o superficie por donde la partícula puede moverse (Restricción) la partícula podrá moverse siempre que el gradiente tenga un componente tangente la restricción, es decir siempre que la función pueda crecer en los valores de esa superficie o curva. Supongamos que la partícula llega a un punto en que no puede moverse más, eso quiere decir que el gradiente ya no tiene componente tangente a la superficie (Es perpendicular). Entonces la función alcanzó un máximo condicionado a esa restricción. Para calcular los mínimos el procedimiento es el mismo, solo debemos fijar que la partícula se mueva en sentido contrario al gradiente.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.60\linewidth]{Images/lagrange.jpg}
+
+    \caption{Representación gráfica de los extremos condicionados}
+\end{figure}
+
+\par La conclusión es que los extremos condicionados a una superficie son aquellos en que el gradiente es perpendicular al cuerpo. Dado que el gradiente de una función escalar asociada a esa restricción es siempre perpendicular al cuerpo deducimos que: \textit{los extremos condicionados de una función $f(\vec{x})$ a una superficie de nivel de una función escalar $g\vec{x}$ verifican lo siguiente:}
+
+\begin{equation**}
+    \vec{\nabla} f(\vec{x}) = \lambda \vec{\nabla}g\vec{x}
+\end{equation**}
+
+Donde $\lambda$ es el factor llamado multiplicador de Lagrange. De esta ecuación conseguimos un sistema de $n$ ecuaciones siendo $n$ la dimensión del espacio origen de $f$ y $g$, con $n+1$ incógnitas, por lo que necesitamos una última ecuación para poder resolver el sistema. Esta última ecuación la obtenemos de la ecuación de la restricción. El valor de $\lambda$ es irrelevante, lo que queremos calcular son los puntos $\vec{x}$ que verifican esa ecuación. Para una función $f(x,y)$ restringida a una superficie $g(x,y)$ el sistema sería el siguiente:
+
+\begin{equation**}
+    \vec{\nabla}f(x,y) = \lambda \vec{\nabla}g(x,y) \Rightarrow
+    \left\{ \begin{array}{ l } \vec{\nabla}f_{x} = \lambda \vec{\nabla}g_{x} \\ \vec{\nabla}f_{y} = \lambda \vec{\nabla}g_{y} \\ g(x,y) = 0   \end{array} \right.
+\end{equation**}
+
+Podemos extender el concepto de extremos condicionados a varias superficies con el método de los multiplicadores de Lagrange de la siguiente forma, simplemente añadiendo un multiplicador por cada restricción:
+
+\begin{equation**}
+    \vec{\nabla}f(\vec{x}) = \sum_{i}^m \lambda_{i}\vec{\nabla}g_{i}(\vec{x})
+\end{equation**}
+
+Donde $m$ es el número de restricciones. A partir de esta igualdad obtenemos un sistema de $n$ ecuaciones con $n+m$ incógnitas. Las otras $m$ ecuaciones las obtenemos de las ecuaciones de las curvas. Para el caso de una función 2D restringida a dos curvas el sistema sería el siguiente:
+
+\begin{equation**}
+    \vec{\nabla}f(x,y) = \lambda \vec{\nabla}g(x,y) + \mu \vec{\nabla}h(x,y) \Rightarrow
+    \left\{ \begin{array}{ l } \vec{\nabla}f_{x} = \lambda \vec{\nabla}g_{x} +\mu \vec{\nabla}h_{x} \\ \vec{\nabla}f_{y} = \lambda \vec{\nabla}g_{y} +\mu \vec{\nabla}h_{y}  \\ g(x,y) = 0 \\ h(x,y)=0   \end{array} \right.
+\end{equation**}
+
+\newpage
+
+\section{Anexo: Cónicas y cuádricas}
+
+\subsection{Cónicas}
+
+Podemos entender las cónicas como lugares geométricos y como soluciones de ecuaciones cuadráticas. Geométricamente las cónicas son las curvas que resultan de interseccionar un cono con un plano. Si el plano pasa por el origen (Vértice del cono) se denominan cónicas degeneradas y si no pasan por el vértice obtenemos las cónicas más habituales (Elipse, parábola, hipérbola y circunferencia).
+
+\begin{figure}[h!]
+    \begin{subfigure}{0.60\textwidth}
+        \includegraphics[width=0.60\linewidth]{Images/conicas.png}
+
+    \end{subfigure}
+    \begin{subfigure}{0.60\textwidth}
+        \includegraphics[width=0.80\linewidth]{Images/conicas plano.png}
+    \end{subfigure}
+    \caption{Representación gráfica de las cónicas}
+\end{figure}
+
+La ecuación general de una cónica es la siguiente, en forma de ecuación cuadrática:
+
+\begin{equation**}
+    Ax^2+2Hxy+By^2+2Gx+2Fy-c = 0
+\end{equation**}
+
+En función de los valores de los diferentes parámetros obtendremos los diferentes tipos de cónicas:
+
+\newpage
+
+\subsubsection{Circunferencia}
+
+Es la cónica más básica y la que más aparece. Cabe destacar que es un caso particular de elipse con excentricidad 1. Geométricamente se define como el conjunto de puntos equidistantes a un centro de coordenadas $(h,k)$. La distancia al centro es el radio y tiene como ecuación canónica:
+
+\begin{equation**}
+    (x-h)^2+(y-k)^2 = R^2
+\end{equation**}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.50\linewidth]{Images/circunferencia.jpg}
+\end{figure}
+
+\subsubsection{Parábola}
+
+Se define como el conjunto de puntos equidistantes a una recta (Directriz) y un punto (Foco), con vértice en $(h,k)$. Su ecuación canónica es la siguiente:
+
+\begin{align*}
+    (x-h)^2 &= 4p(y-k)  \Rightarrow \text{Eje vertical con foco en: } (h,k+p) \\
+    (y-k)^2 &= 4p(x-h) \Rightarrow \text{Eje horizontal con foco en: } (h+p,k)
+\end{align*}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.50\linewidth]{Images/parabola.png}
+\end{figure}
+
+
+\subsubsection{Elipse}
+
+Conjunto de puntos en los que la suma de la distancia a otros dos puntos (Focos) es constante. El centro tiene como coordenadas $(h,k)$ y la ecuación canónica es la siguiente:
+
+\begin{align*}
+    \frac{(x-h)^2}{a^2} + \frac{(y-k)^2}{b^2} &= 1  \Rightarrow \text{Eje mayor horizontal} \\
+    \frac{(x-h)^2}{b^2} + \frac{(y-k)^2}{a^2} &= 1  \Rightarrow \text{Eje mayor vertical} \\
+\end{align*}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.70\linewidth]{Images/elipse.png}
+\end{figure}
+
+Las coordenadas de los focos están separadas $c$ unidades del centro y cumplen la siguiente relación: $c^2=a^2-b^2$.
+
+\par La excentricidad de una elipse se define de la siguiente forma:
+
+\begin{equation**}
+    e = \frac{c}{a} = \sqrt{\frac{1-b^2}{a^2}}
+\end{equation**}
+Esta magnitud hace referencia al achatamiento de la elipse, cuánta mayor excentricidad más achatada estará. Las circunferencias son elipses  con $e=0$.
+
+\subsubsection{Hipérbola}
+
+Conjunto de puntos para los que el valor absoluto de la diferencia entre la distancia a dos puntos (Focos) es constante. Su ecuación canónica con centro en $(h,k)$ es la siguiente:
+
+\begin{align*}
+    \frac{(x-h)^2}{a^2} - \frac{(y-k)^2}{b^2} &= 1 \Rightarrow \text{Eje transversal horizontal} \\
+    \frac{(y-k)^2}{a^2} - \frac{(x-h)^2}{b^2} &= 1 \Rightarrow \text{Eje transversal vertical}
+\end{align*}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.50\linewidth]{Images/circunferencia.jpg}
+\end{figure}
+
+
+\newpage
+
+\subsection{Cuádricas}
+
+Las cuádricas representan las soluciones a una ecuación arbitraria de segundo grado en tres variables:
+
+\begin{equation**}
+    Ax^2+By^2+Cz^2+Dxy+Exz+Fyz+Gx+Hy+Iz+J=0
+\end{equation**}
+ 
+Existen seis tipos básicos de cuádricas en función de los diferentes valores de sus parámetros:
+
+\subsubsection{Elipsoide}
+
+\begin{wrapfigure}{r}{0.50\textwidth}
+    \centering
+    \includegraphics[width=0.60\linewidth]{Images/elipsoide.png}
+\end{wrapfigure}
+
+Está formada por elipses de diferente excentricidad en los diferentes ejes. Su ecuación canónica es la siguiente:
+
+\begin{equation**}
+    \frac{x^2}{a^2}+\frac{y^2}{b^2}+\frac{z^2}{c^2}=1
+\end{equation**}
+
+La elipsoide incluso como caso particular a la esfera si $a=b=c\neq 0$.
+
+\subsubsection{Hiperboloide de una hoja}
+
+
+\begin{wrapfigure}{r}{0.50\textwidth}
+    \centering
+    \includegraphics[width=0.60\linewidth]{Images/hiperboloide1.png}
+\end{wrapfigure}
+
+Formado por una elipse en el plano XY y una hipérbola en los planos XZ e YZ. Su ecuación canónica es la siguiente:
+
+\begin{equation**}
+    \frac{x^2}{a^2}+\frac{y^2}{b^2}-\frac{z^2}{c^2}=1
+\end{equation**}
+
+El eje del hiperboloide corresponde a la variable con coeficiente negativo.
+
+\subsubsection{Hiperboloide de dos hojas}
+
+\begin{wrapfigure}{r}{0.50\textwidth}
+    \centering
+    \includegraphics[width=0.60\linewidth]{Images/hiperboloide2.png}
+\end{wrapfigure}
+
+Formado por una elipse en el plano XY y una hipérbola en los planos XZ e YZ. Su ecuación canónica es la siguiente:
+
+\begin{equation**}
+    \frac{z^2}{c^2}-\frac{x^2}{a^2}-\frac{y^2}{b^2}=1
+\end{equation**}
+
+El eje del hiperboloide corresponde a la variable con coeficiente positivo.
+
+\newpage
+
+\subsubsection{Cono elíptico}
+
+\begin{wrapfigure}{r}{0.50\textwidth}
+    \centering
+    \includegraphics[width=0.60\linewidth]{Images/conoeliptico.png}
+\end{wrapfigure}
+
+Formado por una elipse en el plano paralelo al eje XY y hipérbolas en los planos paralelos a los ejes XZ e YZ. Su ecuación canónica es la siguiente:
+
+\begin{equation**}
+    \frac{x^2}{a^2}+\frac{y^2}{b^2}-\frac{z^2}{c^2}=0
+\end{equation**}
+
+\bigskip
+
+\subsubsection{Paraboloide elíptico}
+
+\begin{wrapfigure}{r}{0.50\textwidth}
+    \centering
+    \includegraphics[width=0.60\linewidth]{Images/paraboloideEliptico.png}
+\end{wrapfigure}
+
+Formado por una elipse en el plano paralelo al eje XY y parábolas en los planos paralelos a los ejes XZ e YZ. Su ecuación canónica es la siguiente:
+
+\begin{equation**}
+    z = \frac{x^2}{a^2}+\frac{y^2}{b^2}
+\end{equation**}
+
+El eje del paraboloide corresponde a la variable elevada a la primera potencia.
+
+\subsubsection{Paraboloide hipérbolica}
+
+\begin{wrapfigure}{r}{0.50\textwidth}
+    \centering
+    \includegraphics[width=0.60\linewidth]{Images/paraboloidehiperbolico.png}
+\end{wrapfigure}
+
+Formado por una hipérbola en el plano paralelo al eje XY y parábolas en los planos paralelos a los ejes XZ e YZ. Su ecuación canónica es la siguiente:
+
+\begin{equation**}
+    z = \frac{y^2}{b^2}-\frac{x^2}{a^2}
+\end{equation**}
+
+El eje del paraboloide corresponde a la variable elevada a la primera potencia.
+
+\end{document}

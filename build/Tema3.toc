@@ -1,0 +1,12 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {section}{\numberline {1}Introducción}{2}{}%
+\contentsline {section}{\numberline {2}Integrales 2D}{3}{}%
+\contentsline {subsection}{\numberline {2.1}Teorema de Fubini}{5}{}%
+\contentsline {subsection}{\numberline {2.2}Integrales dobles en regiones elementales}{5}{}%
+\contentsline {subsection}{\numberline {2.3}Cambios de variable y jacobiano}{8}{}%
+\contentsline {subsubsection}{\numberline {2.3.1}Particiones y jacobiano}{9}{}%
+\contentsline {section}{\numberline {3}Integrales 3D}{12}{}%
+\contentsline {subsection}{\numberline {3.1}Integrales en volúmenes no elementales}{12}{}%
+\contentsline {subsection}{\numberline {3.2}Cambios de variable}{14}{}%
+\contentsline {subsubsection}{\numberline {3.2.1}Cambio a cilíndricas}{15}{}%
+\contentsline {subsubsection}{\numberline {3.2.2}Cambio a esféricas}{16}{}%
